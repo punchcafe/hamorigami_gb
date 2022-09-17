@@ -3,18 +3,17 @@
 
 #include<gb/gb.h>
 
-const Vector _system_horizontal_input_left_input = {-1, 0};
-const Vector _system_horizontal_input_right_input = {1, 0};
-
 void system_horizontal_input(KodamaState * state)
 {
     unsigned char input = joypad();
     if(input & J_LEFT)
     {
-        vec_add(&state->position, &_system_horizontal_input_left_input);
-    }
-    if(input & J_RIGHT)
+        vec_set_x(&state->velocity, -2);
+    } else if(input & J_RIGHT)
     {
-        vec_add(&state->position, &_system_horizontal_input_right_input);
+        vec_set_x(&state->velocity, 2);
+    } else {
+        vec_set_x(&state->velocity, 0);
     }
+
 }

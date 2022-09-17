@@ -5,5 +5,5 @@ const Vector _system_gravity_gravity_vec = {0, 1};
 
 void system_gravity(KodamaState * state)
 {
-    vec_add(&state->position, &_system_gravity_gravity_vec);
+    vec_add(&state->velocity, &_system_gravity_gravity_vec);
 }

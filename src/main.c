@@ -4,6 +4,8 @@
 #include "../include/systems/catch_landing.h"
 #include "../include/systems/horizontal_input.h"
 #include "../include/systems/flying_input.h"
+#include "../include/systems/translate_velocity.h"
+#include "../include/systems/clamp_velocity.h"
 #include<gb/gb.h>
 
 unsigned char kodama_sprite_data[] =
@@ -44,10 +46,12 @@ int main()
     while(1)
     {
         wait_vbl_done();
-        system_render_kodama(&kodama_state);
-        system_catch_landing(&kodama_state);
         system_gravity(&kodama_state);
         system_horizontal_input(&kodama_state);
         system_flying_input(&kodama_state);
+        system_clamp_velocity(&kodama_state);
+        system_translate_velocity(&kodama_state);
+        system_catch_landing(&kodama_state);
+        system_render_kodama(&kodama_state);
     }
 }

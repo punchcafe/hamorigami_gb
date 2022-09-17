@@ -13,7 +13,7 @@ void system_flying_input(KodamaState * state)
         if(joypad() & J_A)
         {
             state->remaining_fly--;
-            vec_add(&state->position, &_system_flying_input_flying_change);
+            vec_add(&state->velocity, &_system_flying_input_flying_change);
         }
     }
 }
