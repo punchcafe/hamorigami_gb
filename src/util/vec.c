@@ -13,3 +13,11 @@ int vec_x(Vector * vec){
 int vec_y(Vector * vec){
     return vec->y;
 }
+
+void vec_set_x(Vector * vec, int x){
+    vec->x = x;
+}
+
+void vec_set_y(Vector * vec, int y){
+    vec->y = y;
+}

@@ -1,6 +1,9 @@
 #include "../../include/systems/gravity.h"
+#include "../../include/util/vec.h"
+
+const Vector _system_gravity_gravity_vec = {0, 1};
 
 void system_gravity(KodamaState * state)
 {
-    state->position.y += 1;
+    vec_add(&state->position, &_system_gravity_gravity_vec);
 }
