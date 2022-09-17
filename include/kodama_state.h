@@ -3,13 +3,16 @@
 
 #define KODAMA_WIDTH 16
 #define KODAMA_HEIGHT 32
+
+#include "./util/vec.h"
+
 typedef enum {
     K_S_FLYING, K_S_GROUNDED 
 } KodamaStates;
 
 typedef struct {
-    unsigned int x;
-    unsigned int y;
+    Vector position;
+    Vector velocity;
     unsigned int remaining_fly;
     KodamaStates state;
 } KodamaState;

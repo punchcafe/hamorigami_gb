@@ -10,7 +10,7 @@ void system_flying_input(KodamaState * state)
         if(joypad() & J_A)
         {
             state->remaining_fly--;
-            state->y -= 2;
+            state->position.y -= 2;
         }
     }
 }

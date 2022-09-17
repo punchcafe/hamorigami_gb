@@ -6,10 +6,10 @@ void system_horizontal_input(KodamaState * state)
     unsigned char input = joypad();
     if(input & J_LEFT)
     {
-        state->x--;
+        state->position.x--;
     }
     if(input & J_RIGHT)
     {
-        state->x++;
+        state->position.x++;
     }
 }

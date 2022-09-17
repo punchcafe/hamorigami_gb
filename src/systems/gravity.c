@@ -2,5 +2,5 @@
 
 void system_gravity(KodamaState * state)
 {
-    state->y += 1;
+    state->position.y += 1;
 }
