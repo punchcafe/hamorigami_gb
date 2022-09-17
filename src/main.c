@@ -2,6 +2,7 @@
 #include "../include/systems/render_kodama.h"
 #include "../include/systems/gravity.h"
 #include "../include/systems/catch_landing.h"
+#include "../include/systems/horizontal_input.h"
 #include<gb/gb.h>
 
 
@@ -22,5 +23,6 @@ int main()
         system_render_kodama(&kodama_state);
         system_catch_landing(&kodama_state);
         system_gravity(&kodama_state);
+        system_horizontal_input(&kodama_state);
     }
 }
