@@ -3,10 +3,11 @@
 #include "../include/systems/gravity.h"
 #include "../include/systems/catch_landing.h"
 #include "../include/systems/horizontal_input.h"
+#include "../include/systems/flying_input.h"
 #include<gb/gb.h>
 
 
-KodamaState kodama_state = {30, 20, 500};
+KodamaState kodama_state = {30, 20, 50};
 
 const unsigned char kodama_data [] = {
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
@@ -24,5 +25,6 @@ int main()
         system_catch_landing(&kodama_state);
         system_gravity(&kodama_state);
         system_horizontal_input(&kodama_state);
+        system_flying_input(&kodama_state);
     }
 }

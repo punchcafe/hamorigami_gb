@@ -6,6 +6,7 @@ void system_catch_landing(KodamaState * state)
 {
     if(state->y > 100)
     {
+        kodama_state_land(state);
         state->y = 100;
     }
 }
