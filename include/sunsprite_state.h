@@ -6,5 +6,9 @@
 typedef struct {
     Vector position;
     unsigned short sprite_num;
+    unsigned char is_exploding;
+    unsigned short explosion_countdown;
 } SunspriteState;
+
+void sunsprite_state_init(SunspriteState * state);
 #endif

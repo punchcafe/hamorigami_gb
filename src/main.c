@@ -70,6 +70,9 @@ int main()
     set_sprite_tile(4, 0x06);
     // enemies
     set_sprite_tile(5, 0x08);
+
+    sunsprite_state_init(&sunsprite_state);
+    bonsai_state_init(&bonsai_state);
     SHOW_SPRITES;
     SHOW_BKG;
     SPRITES_8x16;
