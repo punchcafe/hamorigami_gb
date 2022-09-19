@@ -32,7 +32,7 @@ void _system_bonsai_update_level_up(BonsaiState * state)
 
 void _system_bonsai_update_water_level(BonsaiState * state)
 {
-    state->water_level--;
+    if(state->water_level > 0) state->water_level--;
 }
 
 void system_bonsai_update(BonsaiUpdateState * proc_state, BonsaiState * state)
@@ -59,7 +59,6 @@ void system_bonsai_update(BonsaiUpdateState * proc_state, BonsaiState * state)
     {
         _system_bonsai_update_level_up(state);
     }
-    state->water_level--;
     proc_state->ticks = 0;
 }
 #endif
