@@ -1,4 +1,6 @@
 #include "../include/kodama_state.h"
+#include "../include/sunsprite_state.h"
+#include "../include/bonsai_state.h"
 #include "../include/systems/render_kodama.h"
 #include "../include/systems/gravity.h"
 #include "../include/systems/catch_landing.h"
@@ -6,6 +8,8 @@
 #include "../include/systems/flying_input.h"
 #include "../include/systems/translate_velocity.h"
 #include "../include/systems/clamp_velocity.h"
+#include "../include/systems/render_sunsprite.h"
+#include "../include/systems/sunsprite_behaviour.h"
 #include<gb/gb.h>
 
 unsigned char black_square_data [] = {
@@ -37,7 +41,17 @@ unsigned char kodama_sprite_data[] =
   0xE0,0x00,0xC0,0x00,0x00,0x00,0x00,0x00
 };
 
+unsigned char sunsprite_data[] =
+{
+  0x18,0x00,0x00,0x18,0xC3,0x00,0x18,0xC3,
+  0x24,0x18,0x42,0x3C,0xA5,0x5A,0xA5,0x5A,
+  0x42,0x3C,0x66,0x18,0x5A,0x24,0x42,0x3C,
+  0xA5,0x5A,0x99,0x66,0x66,0x18,0x00,0x3C
+};
+
 KodamaState kodama_state = {{30, 20}, {0,0}, 50};
+SunspriteState sunsprite_state = {{30, 20}, 5};
+BonsaiState bonsai_state = {{120, 120}};
 
 const unsigned char kodama_data [] = {
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
@@ -45,13 +59,17 @@ const unsigned char kodama_data [] = {
 
 int main()
 {
+    // TODO: extract setup to functions with constants
     set_sprite_data(0, 8, kodama_sprite_data);
+    set_sprite_data(8, 9, sunsprite_data);
     set_bkg_data(1, 1, black_square_data);
     set_bkg_tiles(0, 17, 31, 1, platform_tile_data);
     set_sprite_tile(1, 0x00);
     set_sprite_tile(2, 0x02);
     set_sprite_tile(3, 0x04);
     set_sprite_tile(4, 0x06);
+    // enemies
+    set_sprite_tile(5, 0x08);
     SHOW_SPRITES;
     SHOW_BKG;
     SPRITES_8x16;
@@ -65,5 +83,9 @@ int main()
         system_translate_velocity(&kodama_state);
         system_catch_landing(&kodama_state);
         system_render_kodama(&kodama_state);
+
+
+        system_sunsprite_behaviour(&sunsprite_state, &bonsai_state);
+        system_render_sunsprite(&sunsprite_state);
     }
 }
