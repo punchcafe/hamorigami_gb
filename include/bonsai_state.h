@@ -10,6 +10,8 @@ typedef struct {
     Vector position;
     unsigned short level;
     unsigned int level_time_remaining;
+    unsigned int water_level;
+    unsigned int hp;
     // precalculated caching
     unsigned int x_left;
     unsigned int x_right;

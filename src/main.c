@@ -11,6 +11,7 @@
 #include "../include/systems/render_sunsprite.h"
 #include "../include/systems/render_bonsai.h"
 #include "../include/systems/sunsprite_behaviour.h"
+#include "../include/systems/bonsai_update.h"
 #include<gb/gb.h>
 
 unsigned char black_square_data [] = {
@@ -90,7 +91,8 @@ unsigned char bonsai_data[] =
 
 KodamaState kodama_state = {{30, 20}, {0,0}, 50};
 SunspriteState sunsprite_state = {{30, 20}, 5};
-BonsaiState bonsai_state = {{120, 120}};
+BonsaiState bonsai_state = {{120, 120}, 0, 30, 50, 200};
+BonsaiUpdateState bonsai_update_state = {0};
 BonsaiRenderState render_bonsai_state = {0x00};
 
 const unsigned char kodama_data [] = {
@@ -132,5 +134,6 @@ int main()
 
         system_sunsprite_behaviour(&sunsprite_state, &bonsai_state);
         system_render_sunsprite(&sunsprite_state);
+        system_bonsai_update(&bonsai_update_state, &bonsai_state);
     }
 }
