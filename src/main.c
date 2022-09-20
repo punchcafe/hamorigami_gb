@@ -111,7 +111,7 @@ unsigned char rainsprite_data[] =
 
 KodamaState kodama_state = {{30, 20}, {0,0}, 50};
 SunspriteInstance sunsprite_instances [SUNSPRITE_MAX_SPRITES];
-RainspriteState rainsprite_state = {{30, 0}, 7, 0, 0, 60};
+RainspriteInstance rainsprite_instances [RAINSPRITE_MAX_SPRITES];
 BonsaiState bonsai_state = {{120, 120}, 0, 30, 50, 200};
 BonsaiUpdateState bonsai_update_state = {0};
 BonsaiRenderState render_bonsai_state = {0x00};
@@ -125,6 +125,7 @@ int main()
 
     system_sunsprite_behaviour_add_sprite(sunsprite_instances, 180, 20);
     system_sunsprite_behaviour_add_sprite(sunsprite_instances, 50, 30);
+    system_rainsprite_behaviour_add_sprite(rainsprite_instances, 20, 0);
     for(int i=0; i < 240; i++)
     {
       unsigned char tiles [] = {0x00};
@@ -146,7 +147,7 @@ int main()
     set_sprite_tile(5, 0x08);
     set_sprite_tile(6, 0x08);
     // Rainsprite
-    set_sprite_tile(7, 0x0b);
+    set_sprite_tile(10, 0x0b);
     bonsai_state_init(&bonsai_state);
     SHOW_SPRITES;
     SHOW_BKG;
@@ -163,8 +164,8 @@ int main()
         system_render_kodama(&kodama_state);
         system_render_bonsai(&render_bonsai_state, &bonsai_state);
         system_sunsprite_behaviour(sunsprite_instances, &bonsai_state);
-        system_rainsprite_behaviour(&rainsprite_state, &bonsai_state);
-        system_render_rainsprite(&rainsprite_state);
+        system_rainsprite_behaviour(rainsprite_instances, &bonsai_state);
+        system_render_rainsprite(&rainsprite_instances[0].state);
         system_render_sunsprite(&sunsprite_instances[0].state);
         system_render_sunsprite(&sunsprite_instances[1].state);
         system_bonsai_update(&bonsai_update_state, &bonsai_state);

@@ -32,12 +32,35 @@ void _system_rainsprite_behaviour_walk(RainspriteState * state, BonsaiState * bo
     }
 }
 
-void system_rainsprite_behaviour(RainspriteState * state, BonsaiState * bonsai_state){
+void _system_rainsprite_behaviour_single_sprite(RainspriteState * state, BonsaiState * bonsai_state){
     if(!state->has_landed){
         _system_rainsprite_behaviour_falling_rain(state);
     } else if(state->is_exploding) {
         _system_rainsprite_behaviour_explode(state, bonsai_state);
     } else {
         _system_rainsprite_behaviour_walk(state, bonsai_state);
+    }
+}
+
+void system_rainsprite_behaviour(RainspriteInstance * rainsprites, BonsaiState * bonsai_state){
+    for(int i=0; i<RAINSPRITE_MAX_SPRITES; i++)
+    {
+        if(rainsprites[i].alive)
+        {
+            _system_rainsprite_behaviour_single_sprite(&rainsprites[i].state, bonsai_state);
+        }
+    }
+}
+
+void system_rainsprite_behaviour_add_sprite(RainspriteInstance * rainsprites, int x_start, int y_start)
+{
+    for(int i=0; i<RAINSPRITE_MAX_SPRITES; i++)
+    {
+        if(!rainsprites[i].alive)
+        {
+            rainsprite_state_init(&rainsprites[i].state, i+10, x_start, y_start);
+            rainsprites[i].alive = 0x01;
+            return;
+        }
     }
 }
