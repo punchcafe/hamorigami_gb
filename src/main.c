@@ -7,6 +7,7 @@
 #include "../include/systems/catch_landing.h"
 #include "../include/systems/horizontal_input.h"
 #include "../include/systems/flying_input.h"
+#include "../include/systems/kodama_strike.h"
 #include "../include/systems/translate_velocity.h"
 #include "../include/systems/clamp_velocity.h"
 #include "../include/systems/render_sunsprite.h"
@@ -115,6 +116,7 @@ RainspriteInstance rainsprite_instances [RAINSPRITE_MAX_SPRITES];
 BonsaiState bonsai_state = {{120, 120}, 0, 30, 50, 200};
 BonsaiUpdateState bonsai_update_state = {0};
 BonsaiRenderState render_bonsai_state = {0x00};
+SystemKodamaStrikeState kodama_strike_state = {0};
 
 const unsigned char kodama_data [] = {
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
@@ -135,6 +137,7 @@ int main()
     set_sprite_data(0, 8, kodama_sprite_data);
     set_sprite_data(8, 9, sunsprite_data);
     set_sprite_data(10, 11, rainsprite_data);
+    set_sprite_data(15, 1, black_square_data);
     set_bkg_data(1, 1, black_square_data);
     set_bkg_data(2, 16, bonsai_data);
     set_bkg_data(BONSAI_STATE_ICON_OFFSET, 3, bonsai_state_icons);
@@ -148,6 +151,9 @@ int main()
     set_sprite_tile(6, 0x08);
     // Rainsprite
     set_sprite_tile(10, 0x0b);
+
+    // Broom
+    set_sprite_tile(20, 0x0f);
     bonsai_state_init(&bonsai_state);
     SHOW_SPRITES;
     SHOW_BKG;
@@ -161,6 +167,7 @@ int main()
         system_clamp_velocity(&kodama_state);
         system_translate_velocity(&kodama_state);
         system_catch_landing(&kodama_state);
+        system_kodama_strike(&kodama_strike_state, &kodama_state);
         system_render_kodama(&kodama_state);
         system_render_bonsai(&render_bonsai_state, &bonsai_state);
         system_sunsprite_behaviour(sunsprite_instances, &bonsai_state);
