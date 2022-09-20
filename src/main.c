@@ -111,7 +111,7 @@ unsigned char rainsprite_data[] =
 
 KodamaState kodama_state = {{30, 20}, {0,0}, 50};
 SunspriteState sunsprite_state = {{30, 20}, 5};
-RainspriteState rainsprite_state = {{30, 0}, 6, 0, 0};
+RainspriteState rainsprite_state = {{30, 0}, 6, 0, 0, 60};
 BonsaiState bonsai_state = {{120, 120}, 0, 30, 50, 200};
 BonsaiUpdateState bonsai_update_state = {0};
 BonsaiRenderState render_bonsai_state = {0x00};
@@ -163,7 +163,7 @@ int main()
         system_render_bonsai(&render_bonsai_state, &bonsai_state);
 
 
-        system_sunsprite_behaviour(&sunsprite_state, &bonsai_state);
+        //system_sunsprite_behaviour(&sunsprite_state, &bonsai_state);
         system_rainsprite_behaviour(&rainsprite_state, &bonsai_state);
         system_render_rainsprite(&rainsprite_state);
         system_render_sunsprite(&sunsprite_state);

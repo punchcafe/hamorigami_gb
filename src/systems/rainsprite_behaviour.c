@@ -11,8 +11,15 @@ void _system_rainsprite_behaviour_falling_rain(RainspriteState * state)
     state->position.y += 3;
 }
 
-void _system_rainsprite_behaviour_explode(RainspriteState * state)
-{}
+void _system_rainsprite_behaviour_explode(RainspriteState * state, BonsaiState * bonsai_state)
+{
+    state->explosion_countdown--;
+    if(state->explosion_countdown == 0)
+    {
+        bonsai_state->water_level+= 2;
+        state->explosion_countdown = 60;
+    }
+}
 
 void _system_rainsprite_behaviour_walk(RainspriteState * state, BonsaiState * bonsai_state)
 {
@@ -29,7 +36,7 @@ void system_rainsprite_behaviour(RainspriteState * state, BonsaiState * bonsai_s
     if(!state->has_landed){
         _system_rainsprite_behaviour_falling_rain(state);
     } else if(state->is_exploding) {
-        _system_rainsprite_behaviour_explode(state);
+        _system_rainsprite_behaviour_explode(state, bonsai_state);
     } else {
         _system_rainsprite_behaviour_walk(state, bonsai_state);
     }
