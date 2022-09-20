@@ -36,15 +36,6 @@ void _system_kodama_strike_update_strike(SystemKodamaStrikeState * proc_state, K
 
 void system_kodama_strike(SystemKodamaStrikeState * proc_state, KodamaState * state)
 {
-
-    // TODO: system to be extracted. Also fix bug to ignore change if zero.
-    int vel_x = vec_x(&state->velocity);
-    if(vel_x != 0)
-    {
-        // Only update facing if in motion
-        state->facing = vec_x(&state->velocity) > 0 ? K_F_RIGHT : K_F_LEFT;
-    }
-
     if(state->is_striking)
     {
         _system_kodama_strike_update_strike(proc_state, state);
