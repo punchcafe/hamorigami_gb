@@ -26,7 +26,7 @@ void _system_kodama_strike_update_strike(SystemKodamaStrikeState * proc_state, K
     }
 
     proc_state->y_displace++;
-    state->hb_y_up = vec_y(&state->position) + proc_state->y_displace;
+    state->hb_y_up = vec_y(&state->position) + 8;
     state->hb_y_down = state->hb_y_up + 16;
     state->hb_x_left = x_left;
     state->hb_x_right = x_right;
