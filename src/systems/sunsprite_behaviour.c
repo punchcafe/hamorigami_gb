@@ -1,7 +1,8 @@
 #include "../../include/systems/sunsprite_behaviour.h"
 #include <gb/gb.h>
 
-void system_sunsprite_behaviour(SunspriteState * state, BonsaiState * bonsai_state){
+
+void _system_sunsprite_behaviour_single_sprite(SunspriteState * state, BonsaiState * bonsai_state){
     if(state->is_exploding)
     {
         state->explosion_countdown--;
@@ -20,5 +21,29 @@ void system_sunsprite_behaviour(SunspriteState * state, BonsaiState * bonsai_sta
     if(bonsai_state_inside_bonsai(bonsai_state, &state->position))
     {
         state->is_exploding = 0x01;
+    }
+}
+
+void system_sunsprite_behaviour_add_sprite(SunspriteInstance * sunsprites, int x_start, int y_start)
+{
+    for(int i=0; i<SUNSPRITE_MAX_SPRITES; i++)
+    {
+        if(!sunsprites[i].alive)
+        {
+            sunsprite_state_init(&sunsprites[i].state, i+5, x_start, y_start);
+            sunsprites[i].alive = 0x01;
+            return;
+        }
+    }
+}
+
+void system_sunsprite_behaviour(SunspriteInstance * sunsprites, BonsaiState * bonsai_state)
+{
+    for(int i=0; i<SUNSPRITE_MAX_SPRITES; i++)
+    {
+        if(sunsprites[i].alive)
+        {
+            _system_sunsprite_behaviour_single_sprite(&sunsprites[i].state, bonsai_state);
+        }
     }
 }
