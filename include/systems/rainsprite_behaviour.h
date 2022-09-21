@@ -2,15 +2,9 @@
 #define RAINSPRITE_BEHAVIOUR_H
 
 #include "../rainsprite_state.h"
+#include "../rainsprite_instance.h"
 #include "../bonsai_state.h"
 #include <gb/gb.h>
-
-#define RAINSPRITE_MAX_SPRITES 20
-
-typedef struct {
-    unsigned char alive;
-    RainspriteState state;
-} RainspriteInstance;
 
 void system_rainsprite_behaviour(RainspriteInstance * instances, BonsaiState * bonsai_state);
 
