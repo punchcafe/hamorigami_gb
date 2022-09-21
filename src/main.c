@@ -183,7 +183,7 @@ int main()
         system_strike_collision(&kodama_state, sunsprite_instances, rainsprite_instances);
         system_render_kodama(&kodama_state);
         system_render_bonsai(&render_bonsai_state, &bonsai_state);
-        system_sunsprite_behaviour(sunsprite_instances, &bonsai_state, &kodama_state);
+        system_sunsprite_behaviour(sunsprite_instances, &bonsai_state);
         system_rainsprite_behaviour(rainsprite_instances, &bonsai_state);
         system_render_rainsprite(&rainsprite_instances[0].state);
         system_render_sunsprite(&sunsprite_instances[0].state);

@@ -38,7 +38,7 @@ void system_sunsprite_behaviour_add_sprite(SunspriteInstance * sunsprites, int x
     }
 }
 
-void system_sunsprite_behaviour(SunspriteInstance * sunsprites, BonsaiState * bonsai_state, KodamaState * kodama_state)
+void system_sunsprite_behaviour(SunspriteInstance * sunsprites, BonsaiState * bonsai_state)
 {
     // TODO: make this a kodama strike system which runs through all sprite types
     for(int i=0; i<SUNSPRITE_MAX_SPRITES; i++)
