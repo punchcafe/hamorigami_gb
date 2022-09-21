@@ -178,6 +178,7 @@ int main()
     while(1)
     {
         wait_vbl_done();
+        wait_vbl_done();
         // gbt_update();
         system_sprite_factory(&sprite_factory_state, sprite_commands, rainsprite_instances, sunsprite_instances);
         system_gravity(&kodama_state);
@@ -193,9 +194,8 @@ int main()
         system_render_bonsai(&render_bonsai_state, &bonsai_state);
         system_sunsprite_behaviour(sunsprite_instances, &bonsai_state);
         system_rainsprite_behaviour(rainsprite_instances, &bonsai_state);
-        system_render_rainsprite(&rainsprite_instances[0].state);
-        system_render_sunsprite(&sunsprite_instances[0].state);
-        system_render_sunsprite(&sunsprite_instances[1].state);
+        system_render_rainsprite(rainsprite_instances);
+        system_render_sunsprite(sunsprite_instances);
         system_bonsai_update(&bonsai_update_state, &bonsai_state);
     }
 }

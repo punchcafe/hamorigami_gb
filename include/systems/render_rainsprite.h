@@ -1,8 +1,7 @@
 #ifndef SYSTEM_RENDER_RAINSPRITE_H
 #define SYSTEM_RENDER_RAINSPRITE_H
 
-#include "../rainsprite_state.h"
-#include "../bonsai_state.h"
+#include "../rainsprite_instance.h"
 
-void system_render_rainsprite(RainspriteState * state);
+void system_render_rainsprite(RainspriteInstance * instaces);
 #endif

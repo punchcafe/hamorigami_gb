@@ -39,7 +39,7 @@ void system_strike_collision(KodamaState * kodama_state,
                 {
                     sunsprites[i].alive = 0x00;
                     sunsprites[i].state.position.x = 0;
-                    // set up observer here
+                    // TODO: set up observer here
                 }
             }
         }

@@ -2,7 +2,17 @@
 
 const SpriteFactoryCommand sprite_commands [] = {
     {20, 0, S_T_SUN, 0},
-    {70, 0, S_T_SUN, 10},
+    {70, 0, S_T_SUN, 5},
+    {20, 0, S_T_RAIN, 0},
+    {20, 0, S_T_SUN, 5},
+    {20, 0, S_T_SUN, 0},
+    {20, 0, S_T_SUN, 0},
+    {70, 0, S_T_SUN, 5},
+    {20, 0, S_T_RAIN, 0},
+    {20, 0, S_T_SUN, 5},
+    {20, 0, S_T_SUN, 0},
+    {20, 0, S_T_SUN, 0},
+    {70, 0, S_T_SUN, 5},
     {20, 0, S_T_RAIN, 0},
     {20, 0, S_T_SUN, 5},
     {20, 0, S_T_SUN, 0}
