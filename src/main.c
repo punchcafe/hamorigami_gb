@@ -121,7 +121,7 @@ unsigned char rainsprite_data[] =
 };
 
 
-KodamaState kodama_state = {{30, 20}, {0,0}, 50};
+KodamaState kodama_state = {{30, 120}, {0,0}, 50};
 SunspriteInstance sunsprite_instances [SUNSPRITE_MAX_SPRITES];
 RainspriteInstance rainsprite_instances [RAINSPRITE_MAX_SPRITES];
 // TODO: extract instantion of level 1 duration to function calls
