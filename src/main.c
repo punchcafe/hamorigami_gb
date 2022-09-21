@@ -18,6 +18,11 @@
 #include "../include/systems/sunsprite_behaviour.h"
 #include "../include/systems/rainsprite_behaviour.h"
 #include "../include/systems/bonsai_update.h"
+
+#include "../external/include/gbt_player.h"
+
+//extern const unsigned char * const music_track_Data[];
+
 #include<gb/gb.h>
 
 unsigned char black_square_data [] = {
@@ -162,9 +167,11 @@ int main()
     SHOW_SPRITES;
     SHOW_BKG;
     SPRITES_8x16;
+    // gbt_play(party_bgm_loop_Data, 1, 7);
     while(1)
     {
         wait_vbl_done();
+        // gbt_update();
         system_gravity(&kodama_state);
         system_horizontal_input(&kodama_state);
         system_flying_input(&kodama_state);
