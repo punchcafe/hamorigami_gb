@@ -3,6 +3,14 @@
 
 #include "../bonsai_state.h"
 
+// TODO: extract
+// includes level 0
+#define BONSAI_TOTAL_LEVELS 2
+unsigned short level_second_durations [] = {20, 40, 60};
+unsigned short bonsai_half_widths [] = {16, 32, 48};
+unsigned short bonsai_half_heights [] = {16, 32, 48};
+
+
 typedef struct {
     unsigned short ticks;
 } BonsaiUpdateState;
@@ -26,8 +34,10 @@ void _system_bonsai_update_hit_points(BonsaiState * state)
 void _system_bonsai_update_level_up(BonsaiState * state)
 {
     // TODO make more level specific
-    state->level++;
-    state->level_time_remaining = 15;
+    unsigned short new_level = state->level + 1;
+    state->level = new_level;
+    state->level_time_remaining = level_second_durations[new_level];
+    bonsai_state_update_size(state, bonsai_half_widths[new_level], bonsai_half_heights[new_level]);
 }
 
 void _system_bonsai_update_water_level(BonsaiState * state)
@@ -35,9 +45,17 @@ void _system_bonsai_update_water_level(BonsaiState * state)
     if(state->water_level > 0) state->water_level--;
 }
 
+
+void system_bonsai_update_init(BonsaiUpdateState * proc_state, BonsaiState * state)
+{
+    state->level = 0;
+    state->level_time_remaining = level_second_durations[0];
+    bonsai_state_update_size(state, bonsai_half_widths[0], bonsai_half_heights[0]);
+}
+
 void system_bonsai_update(BonsaiUpdateState * proc_state, BonsaiState * state)
 {
-    if(state->hp == 0 || state->level == 1)
+    if(state->hp == 0 || state->level > BONSAI_TOTAL_LEVELS)
     {
         while(1)
         {

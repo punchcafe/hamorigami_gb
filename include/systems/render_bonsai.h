@@ -9,7 +9,7 @@
 #define BONSAI_FIRE_ICON_INDEX BONSAI_STATE_ICON_OFFSET + 2
 
 typedef struct {
-    unsigned char already_rendered;
+    unsigned short last_level_rendered;
 } BonsaiRenderState;
 
 void system_render_bonsai(BonsaiRenderState * render_state, BonsaiState * bonsai_state);

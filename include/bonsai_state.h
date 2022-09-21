@@ -1,6 +1,7 @@
 #ifndef BONSAI_STATE
 #define BONSAI_STATE
 
+// Actually half-width
 #define BONSAI_WIDTH 32
 #define BONSAI_HEIGHT 32
 
@@ -17,9 +18,13 @@ typedef struct {
     unsigned int x_right;
     unsigned int y_up;
     unsigned int y_down;
+    unsigned int half_width;
+    unsigned int half_height;
 } BonsaiState;
 
 void bonsai_state_init(BonsaiState * state);
 
 unsigned char bonsai_state_inside_bonsai(BonsaiState * state, Vector * vec);
+
+unsigned char bonsai_state_update_size(BonsaiState * state, unsigned short half_width, unsigned short half_height);
 #endif

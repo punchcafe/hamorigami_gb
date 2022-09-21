@@ -114,9 +114,10 @@ unsigned char rainsprite_data[] =
 KodamaState kodama_state = {{30, 20}, {0,0}, 50};
 SunspriteInstance sunsprite_instances [SUNSPRITE_MAX_SPRITES];
 RainspriteInstance rainsprite_instances [RAINSPRITE_MAX_SPRITES];
-BonsaiState bonsai_state = {{120, 120}, 0, 30, 50, 200};
+// TODO: extract instantion of level 1 duration to function calls
+BonsaiState bonsai_state = {{120, 120}, 0, 10, 50, 200};
 BonsaiUpdateState bonsai_update_state = {0};
-BonsaiRenderState render_bonsai_state = {0x00};
+BonsaiRenderState render_bonsai_state = {BONSAI_TOTAL_LEVELS + 1}; // Larger than possible 
 SystemKodamaStrikeState kodama_strike_state = {0};
 
 const unsigned char kodama_data [] = {
@@ -153,9 +154,10 @@ int main()
     // Rainsprite
     set_sprite_tile(10, 0x0b);
 
+    bonsai_state_init(&bonsai_state);
+    system_bonsai_update_init(&bonsai_update_state, &bonsai_state);
     // Broom
     set_sprite_tile(20, 0x0f);
-    bonsai_state_init(&bonsai_state);
     SHOW_SPRITES;
     SHOW_BKG;
     SPRITES_8x16;
