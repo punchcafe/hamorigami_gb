@@ -8,6 +8,7 @@
 #include "../include/systems/horizontal_input.h"
 #include "../include/systems/flying_input.h"
 #include "../include/systems/kodama_strike.h"
+#include "../include/systems/strike_collision.h"
 #include "../include/systems/kodama_facing.h"
 #include "../include/systems/translate_velocity.h"
 #include "../include/systems/clamp_velocity.h"
@@ -172,6 +173,7 @@ int main()
         system_translate_velocity(&kodama_state);
         system_catch_landing(&kodama_state);
         system_kodama_strike(&kodama_strike_state, &kodama_state);
+        system_strike_collision(&kodama_state, sunsprite_instances, rainsprite_instances);
         system_render_kodama(&kodama_state);
         system_render_bonsai(&render_bonsai_state, &bonsai_state);
         system_sunsprite_behaviour(sunsprite_instances, &bonsai_state, &kodama_state);
