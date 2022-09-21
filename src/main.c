@@ -9,6 +9,7 @@
 #include "../include/systems/flying_input.h"
 #include "../include/systems/kodama_strike.h"
 #include "../include/systems/strike_collision.h"
+#include "../include/systems/sprite_factory.h"
 #include "../include/systems/kodama_facing.h"
 #include "../include/systems/translate_velocity.h"
 #include "../include/systems/clamp_velocity.h"
@@ -24,6 +25,9 @@
 //extern const unsigned char * const music_track_Data[];
 
 #include<gb/gb.h>
+
+extern const SpriteFactoryCommand sprite_commands [];
+extern const unsigned int sprite_commands_size;
 
 unsigned char black_square_data [] = {
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
@@ -126,6 +130,9 @@ BonsaiUpdateState bonsai_update_state = {0};
 BonsaiRenderState render_bonsai_state = {BONSAI_TOTAL_LEVELS + 1}; // Larger than possible 
 SystemKodamaStrikeState kodama_strike_state = {0};
 
+
+extern SpriteFactoryState sprite_factory_state;
+
 const unsigned char kodama_data [] = {
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
 };
@@ -133,9 +140,9 @@ const unsigned char kodama_data [] = {
 int main()
 {
 
-    system_sunsprite_behaviour_add_sprite(sunsprite_instances, 180, 20);
-    system_sunsprite_behaviour_add_sprite(sunsprite_instances, 50, 30);
-    system_rainsprite_behaviour_add_sprite(rainsprite_instances, 20, 0);
+    //system_sunsprite_behaviour_add_sprite(sunsprite_instances, 180, 20);
+    //system_sunsprite_behaviour_add_sprite(sunsprite_instances, 50, 30);
+    //system_rainsprite_behaviour_add_sprite(rainsprite_instances, 20, 0);
     for(int i=0; i < 240; i++)
     {
       unsigned char tiles [] = {0x00};
@@ -172,6 +179,7 @@ int main()
     {
         wait_vbl_done();
         // gbt_update();
+        system_sprite_factory(&sprite_factory_state, sprite_commands, rainsprite_instances, sunsprite_instances);
         system_gravity(&kodama_state);
         system_horizontal_input(&kodama_state);
         system_flying_input(&kodama_state);
