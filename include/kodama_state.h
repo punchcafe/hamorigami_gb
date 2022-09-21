@@ -2,7 +2,9 @@
 #define KODAMA_STATE
 
 #define KODAMA_WIDTH 16
-#define KODAMA_HEIGHT 32
+#define KODAMA_HALF_WIDTH 8
+#define KODAMA_WIDTH 16
+#define KODAMA_HALF_HEIGHT 16
 
 #include "./util/vec.h"
 
