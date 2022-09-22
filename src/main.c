@@ -11,6 +11,7 @@
 #include "../include/systems/kodama_strike.h"
 #include "../include/systems/strike_collision.h"
 #include "../include/systems/sprite_factory.h"
+#include "../include/systems/cleanup_dying.h"
 #include "../include/systems/kodama_facing.h"
 #include "../include/systems/translate_velocity.h"
 #include "../include/systems/clamp_velocity.h"
@@ -195,6 +196,7 @@ int main()
         system_catch_landing(&kodama_state);
         system_kodama_strike(&kodama_strike_state, &kodama_state);
         system_strike_collision(&kodama_state, sunsprite_instances, rainsprite_instances);
+        system_cleanup_dying(rainsprite_instances, sunsprite_instances);
         system_render_kodama(&kodama_state);
         system_render_bonsai(&render_bonsai_state, &bonsai_state);
         system_sunsprite_behaviour(sunsprite_instances, &bonsai_state);

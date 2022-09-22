@@ -37,9 +37,8 @@ void system_strike_collision(KodamaState * kodama_state,
             {
                 if(_system_strike_collision_check(&sunsprites[i].state.position, kodama_state))
                 {
-                    sunsprites[i].alive = 0x00;
-                    sunsprites[i].state.position.x = 0;
-                    // TODO: set up observer here
+                    sunsprites[i].state.state = S_S_DYING;
+                    sunsprites[i].state.explosion_countdown = 0;
                 }
             }
         }
