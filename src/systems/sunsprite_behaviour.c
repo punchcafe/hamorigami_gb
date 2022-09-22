@@ -4,7 +4,11 @@
 
 
 void _system_sunsprite_behaviour_single_sprite(SunspriteState * state, BonsaiState * bonsai_state){
-    if(state->is_exploding)
+    if(state->state == S_S_DYING)
+    {
+        return;
+    }
+    if(state->state == S_S_CHANNELING)
     {
         state->explosion_countdown--;
         if(state->explosion_countdown == 0)
@@ -21,7 +25,7 @@ void _system_sunsprite_behaviour_single_sprite(SunspriteState * state, BonsaiSta
     vec_add(&state->position, &delta);
     if(bonsai_state_inside_bonsai(bonsai_state, &state->position))
     {
-        state->is_exploding = 0x01;
+        state->state = S_S_CHANNELING;
     }
 }
 

@@ -2,6 +2,7 @@
 #include "../include/sunsprite_state.h"
 #include "../include/rainsprite_state.h"
 #include "../include/bonsai_state.h"
+#include "../include/instance_render_state.h"
 #include "../include/systems/render_kodama.h"
 #include "../include/systems/gravity.h"
 #include "../include/systems/catch_landing.h"
@@ -19,6 +20,7 @@
 #include "../include/systems/sunsprite_behaviour.h"
 #include "../include/systems/rainsprite_behaviour.h"
 #include "../include/systems/bonsai_update.h"
+#include "../include/constants/animation_constants.h"
 
 #include "../external/include/gbt_player.h"
 
@@ -28,6 +30,9 @@
 
 extern const SpriteFactoryCommand sprite_commands [];
 extern const unsigned int sprite_commands_size;
+
+extern const unsigned char sunsprite_tile_data [];
+extern const unsigned char num_sunsprite_tiles;
 
 unsigned char black_square_data [] = {
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
@@ -123,6 +128,7 @@ unsigned char rainsprite_data[] =
 
 KodamaState kodama_state = {{30, 120}, {0,0}, 50};
 SunspriteInstance sunsprite_instances [SUNSPRITE_MAX_SPRITES];
+InstanceRenderState sunsprite_render_states [SUNSPRITE_MAX_SPRITES];
 RainspriteInstance rainsprite_instances [RAINSPRITE_MAX_SPRITES];
 // TODO: extract instantion of level 1 duration to function calls
 BonsaiState bonsai_state = {{120, 120}, 0, 10, 50, 200};
@@ -137,12 +143,15 @@ const unsigned char kodama_data [] = {
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
 };
 
+void setup_sunsprite_render()
+{
+  set_sprite_data(SUNSPRITE_PATTERN_OFFSET, 14, sunsprite_tile_data);
+}
+
 int main()
 {
+    setup_sunsprite_render();
 
-    //system_sunsprite_behaviour_add_sprite(sunsprite_instances, 180, 20);
-    //system_sunsprite_behaviour_add_sprite(sunsprite_instances, 50, 30);
-    //system_rainsprite_behaviour_add_sprite(rainsprite_instances, 20, 0);
     for(int i=0; i < 240; i++)
     {
       unsigned char tiles [] = {0x00};
@@ -161,9 +170,6 @@ int main()
     set_sprite_tile(2, 0x02);
     set_sprite_tile(3, 0x04);
     set_sprite_tile(4, 0x06);
-    // enemies
-    set_sprite_tile(5, 0x08);
-    set_sprite_tile(6, 0x08);
     // Rainsprite
     set_sprite_tile(10, 0x0b);
 
@@ -177,7 +183,6 @@ int main()
     // gbt_play(party_bgm_loop_Data, 1, 7);
     while(1)
     {
-        wait_vbl_done();
         wait_vbl_done();
         // gbt_update();
         system_sprite_factory(&sprite_factory_state, sprite_commands, rainsprite_instances, sunsprite_instances);
@@ -195,7 +200,7 @@ int main()
         system_sunsprite_behaviour(sunsprite_instances, &bonsai_state);
         system_rainsprite_behaviour(rainsprite_instances, &bonsai_state);
         system_render_rainsprite(rainsprite_instances);
-        system_render_sunsprite(sunsprite_instances);
+        system_render_sunsprite(sunsprite_instances, sunsprite_render_states);
         system_bonsai_update(&bonsai_update_state, &bonsai_state);
     }
 }

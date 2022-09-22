@@ -3,10 +3,12 @@
 
 #include "./util/vec.h"
 
+typedef enum {S_S_DYING, S_S_CHANNELING, S_S_MOVING} SunspriteStates;
+
 typedef struct {
     Vector position;
     unsigned short sprite_num;
-    unsigned char is_exploding;
+    SunspriteStates state;
     unsigned short explosion_countdown;
 } SunspriteState;
 
