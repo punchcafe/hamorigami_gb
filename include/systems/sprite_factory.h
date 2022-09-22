@@ -5,9 +5,9 @@
 #include "../../include/systems/rainsprite_behaviour.h"
 
 typedef struct {
-    unsigned int total_number_of_commands;
+    unsigned short total_number_of_commands;
     unsigned short tick;
-    unsigned int next_command;
+    unsigned short next_command;
     unsigned short current_delay;
 } SpriteFactoryState;
 
@@ -17,8 +17,8 @@ typedef enum {
 } SpriteType;
 
 typedef struct {
-    unsigned int starting_x;
-    unsigned int starting_y;
+    unsigned short starting_x;
+    unsigned short starting_y;
     SpriteType type;
     // Time (seconds) until next command
     unsigned short delay;

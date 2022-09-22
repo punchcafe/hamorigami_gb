@@ -10,16 +10,16 @@
 typedef struct {
     Vector position;
     unsigned short level;
-    unsigned int level_time_remaining;
-    unsigned int water_level;
-    unsigned int hp;
+    unsigned short level_time_remaining;
+    unsigned short water_level;
+    unsigned short hp;
     // precalculated caching
-    unsigned int x_left;
-    unsigned int x_right;
-    unsigned int y_up;
-    unsigned int y_down;
-    unsigned int half_width;
-    unsigned int half_height;
+    unsigned short x_left;
+    unsigned short x_right;
+    unsigned short y_up;
+    unsigned short y_down;
+    unsigned short half_width;
+    unsigned short half_height;
 } BonsaiState;
 
 void bonsai_state_init(BonsaiState * state);

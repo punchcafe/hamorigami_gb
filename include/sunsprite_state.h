@@ -12,5 +12,5 @@ typedef struct {
     unsigned short explosion_countdown;
 } SunspriteState;
 
-void sunsprite_state_init(SunspriteState * state, unsigned short sprite_num, unsigned int x_start, unsigned int y_start);
+void sunsprite_state_init(SunspriteState * state, unsigned short sprite_num, unsigned short x_start, unsigned short y_start);
 #endif
