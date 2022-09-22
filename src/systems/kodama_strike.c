@@ -8,6 +8,7 @@ void _system_kodama_strike_update_strike(SystemKodamaStrikeState * proc_state, K
     if(proc_state->y_displace >= 16)
     {
         state->is_striking = 0x00;
+        proc_state->cooldown = 60;
         // TODO: hide sprite
         return;
     }
@@ -39,6 +40,8 @@ void system_kodama_strike(SystemKodamaStrikeState * proc_state, KodamaState * st
     if(state->is_striking)
     {
         _system_kodama_strike_update_strike(proc_state, state);
+    } else if(proc_state->cooldown != 0) {
+        proc_state->cooldown--;
     } else if(joypad() & J_B)
     {
         state->is_striking = 0x01;
