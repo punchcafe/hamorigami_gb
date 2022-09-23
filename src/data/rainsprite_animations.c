@@ -81,8 +81,8 @@ const unsigned char rainsprite_falling_frames [] = {
 const unsigned char rainsprite_dying_frames [] = {
     RAINSPRITE_PATTERN_OFFSET, 
     0x18 + RAINSPRITE_PATTERN_OFFSET,
-    0x2a + RAINSPRITE_PATTERN_OFFSET,
-    0x2c + RAINSPRITE_PATTERN_OFFSET
+    0x1a + RAINSPRITE_PATTERN_OFFSET,
+    0x1c + RAINSPRITE_PATTERN_OFFSET
 };
 
 const unsigned char rainsprite_channeling_frames [] = {
