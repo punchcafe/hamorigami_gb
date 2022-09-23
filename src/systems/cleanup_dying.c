@@ -17,5 +17,16 @@ void system_cleanup_dying(RainspriteInstance * rainsprite_instances, SunspriteIn
                 move_sprite(sunsprite_instances[i].state.sprite_num, 0, 0);
             }
         }
+        if(rainsprite_instances[i].alive && rainsprite_instances[i].state.state == R_S_DYING)
+        {
+            if(rainsprite_instances[i].state.counter < 90)
+            {
+                rainsprite_instances[i].state.counter++;
+            } else {
+                rainsprite_instances[i].state.counter = 0;
+                rainsprite_instances[i].alive = 0x00;
+                move_sprite(rainsprite_instances[i].state.sprite_num, 0, 0);
+            }
+        }
     }
 }

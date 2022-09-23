@@ -7,7 +7,6 @@ extern unsigned char sunsprite_normal_frames [];
 extern unsigned char sunsprite_dying_frames [];
 extern unsigned char sunsprite_channeling_frames [];
 
-unsigned char iterator = 0x0;
 void system_render_sunsprite(SunspriteInstance * instances, InstanceRenderState * render_states){
     // TODO: Have single animation clock
     for(unsigned short i = 0; i < SUNSPRITE_MAX_SPRITES; i++)

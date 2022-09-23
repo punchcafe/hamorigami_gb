@@ -6,18 +6,18 @@ void _system_rainsprite_behaviour_falling_rain(RainspriteState * state)
     if(vec_y(&state->position) > 132)
     {
         vec_set_y(&state->position, 132);
-        state->has_landed = 0x01;
+        state->state = R_S_MOVING;
     }
     state->position.y += 3;
 }
 
-void _system_rainsprite_behaviour_explode(RainspriteState * state, BonsaiState * bonsai_state)
+void _system_rainsprite_behaviour_channeling(RainspriteState * state, BonsaiState * bonsai_state)
 {
-    state->explosion_countdown--;
-    if(state->explosion_countdown == 0)
+    state->counter--;
+    if(state->counter == 0)
     {
         bonsai_state->water_level+= 2;
-        state->explosion_countdown = 60;
+        state->counter = 60;
     }
 }
 
@@ -28,17 +28,24 @@ void _system_rainsprite_behaviour_walk(RainspriteState * state, BonsaiState * bo
     vec_add(&state->position, &delta);
     if(bonsai_state_inside_bonsai(bonsai_state, &state->position))
     {
-        state->is_exploding = 0x01;
+        state->state = R_S_CHANNELING;
     }
 }
 
 void _system_rainsprite_behaviour_single_sprite(RainspriteState * state, BonsaiState * bonsai_state){
-    if(!state->has_landed){
-        _system_rainsprite_behaviour_falling_rain(state);
-    } else if(state->is_exploding) {
-        _system_rainsprite_behaviour_explode(state, bonsai_state);
-    } else {
-        _system_rainsprite_behaviour_walk(state, bonsai_state);
+    switch(state->state)
+    {
+        case R_S_FALLING:
+            _system_rainsprite_behaviour_falling_rain(state);
+            break;
+        case R_S_CHANNELING:
+            _system_rainsprite_behaviour_channeling(state, bonsai_state);
+            break;
+        case R_S_MOVING:
+            _system_rainsprite_behaviour_walk(state, bonsai_state);
+            break;
+        default:
+            break;
     }
 }
 

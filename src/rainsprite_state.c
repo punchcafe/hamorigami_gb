@@ -1,8 +1,8 @@
 #include "../include/rainsprite_state.h"
 void rainsprite_state_init(RainspriteState * state, unsigned short sprite_num,unsigned short x_start, unsigned short y_start)
 {
-    state->is_exploding = 0x00;
-    state->explosion_countdown = 180;
+    state->state = R_S_FALLING;
+    state->counter = 180;
     state->sprite_num = sprite_num;
     state->position.x = x_start;
     state->position.y = y_start;

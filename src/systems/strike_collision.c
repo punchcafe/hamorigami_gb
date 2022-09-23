@@ -51,9 +51,8 @@ void system_strike_collision(KodamaState * kodama_state,
             {
                 if(_system_strike_collision_check(&rainsprites[i].state.position, kodama_state))
                 {
-                    rainsprites[i].alive = 0x00;
-                    rainsprites[i].state.position.x = 0;
-                    // set up observer here
+                    rainsprites[i].state.state = R_S_DYING;
+                    rainsprites[i].state.counter = 0;
                 }
             }
         }
