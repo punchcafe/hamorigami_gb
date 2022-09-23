@@ -33,7 +33,7 @@ extern const SpriteFactoryCommand sprite_commands [];
 extern const unsigned short sprite_commands_size;
 
 extern const unsigned char sunsprite_tile_data [];
-extern const unsigned char num_sunsprite_tiles;
+extern const unsigned char rainsprite_tile_data [];
 
 unsigned char black_square_data [] = {
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
@@ -131,6 +131,7 @@ KodamaState kodama_state = {{30, 120}, {0,0}, 50};
 SunspriteInstance sunsprite_instances [SUNSPRITE_MAX_SPRITES];
 InstanceRenderState sunsprite_render_states [SUNSPRITE_MAX_SPRITES];
 RainspriteInstance rainsprite_instances [RAINSPRITE_MAX_SPRITES];
+InstanceRenderState rainsprite_render_states [SUNSPRITE_MAX_SPRITES];
 // TODO: extract instantion of level 1 duration to function calls
 BonsaiState bonsai_state = {{120, 120}, 0, 10, 50, 200};
 BonsaiUpdateState bonsai_update_state = {0};
@@ -144,14 +145,15 @@ const unsigned char kodama_data [] = {
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
 };
 
-void setup_sunsprite_render()
+void setup_sprites_render()
 {
   set_sprite_data(SUNSPRITE_PATTERN_OFFSET, 14, sunsprite_tile_data);
+  set_sprite_data(RAINSPRITE_PATTERN_OFFSET, 30, rainsprite_tile_data);
 }
 
 int main()
 {
-    setup_sunsprite_render();
+    setup_sprites_render();
 
     for(int i=0; i < 240; i++)
     {
@@ -201,7 +203,7 @@ int main()
         system_render_bonsai(&render_bonsai_state, &bonsai_state);
         system_sunsprite_behaviour(sunsprite_instances, &bonsai_state);
         system_rainsprite_behaviour(rainsprite_instances, &bonsai_state);
-        system_render_rainsprite(rainsprite_instances);
+        system_render_rainsprite(rainsprite_instances, rainsprite_render_states);
         system_render_sunsprite(sunsprite_instances, sunsprite_render_states);
         system_bonsai_update(&bonsai_update_state, &bonsai_state);
     }
