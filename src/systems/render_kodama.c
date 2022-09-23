@@ -1,10 +1,35 @@
 #include "../../include/systems/render_kodama.h"
 #include "../../include/util/vec.h"
+#include "../../include/kodama_animation.h"
 #include<gb/gb.h>
+
+extern KodamaAnimation kodama_run_animation;
+
+#define KODAMA_SPRITE_OFFSET 1
+
+unsigned char anim_tick = 0;
+unsigned char delay_counter = 0;
+
+void kodama_animation_bump_frame(KodamaAnimation * animation, unsigned char frame)
+{
+    for(unsigned char i = 0; i < 4; i++)
+    {
+        set_sprite_tile(KODAMA_SPRITE_OFFSET + i, animation->frames[i][frame]);
+    }
+}
 
 void system_render_kodama(KodamaState * state)
 {
+    if(delay_counter > 20)
+    {
+        delay_counter = 0;
+    // set to always running for test
+    anim_tick = (anim_tick + 1) % kodama_run_animation.loop_size;
+    kodama_animation_bump_frame(&kodama_run_animation, anim_tick); 
+    }
+    delay_counter++;
     Vector * position = &(state->position);
+
     if(state->facing == K_F_LEFT)
     {
         // TODO: optimise so only done once per direction change

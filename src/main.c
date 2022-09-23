@@ -34,6 +34,7 @@ extern const unsigned short sprite_commands_size;
 
 extern const unsigned char sunsprite_tile_data [];
 extern const unsigned char rainsprite_tile_data [];
+extern unsigned char kodama_run_pallette[];
 
 unsigned char black_square_data [] = {
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
@@ -149,6 +150,7 @@ void setup_sprites_render()
 {
   set_sprite_data(SUNSPRITE_PATTERN_OFFSET, 14, sunsprite_tile_data);
   set_sprite_data(RAINSPRITE_PATTERN_OFFSET, 30, rainsprite_tile_data);
+  set_sprite_data(74, 14, kodama_run_pallette);
 }
 
 int main()
