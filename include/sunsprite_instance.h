@@ -3,7 +3,7 @@
 
 #include "./sunsprite_state.h"
 
-#define SUNSPRITE_MAX_SPRITES 20
+#define SUNSPRITE_MAX_SPRITES 6
 
 
 typedef struct {
