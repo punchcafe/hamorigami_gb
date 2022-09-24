@@ -44,7 +44,7 @@ void system_strike_collision(KodamaState * kodama_state,
     _system_strike_collision_kodama_hitbox_center(kodama_state, &hitbox_center);
     int hitbox_x_center = hitbox_center.x;
     int hitbox_y_center = hitbox_center.y;
-    for(unsigned short i=0; i<SUNSPRITE_MAX_SPRITES; i++)
+    for(unsigned char i=0; i<SUNSPRITE_MAX_SPRITES; i++)
     {
         if(sunsprites[i].alive)
         {
@@ -58,7 +58,7 @@ void system_strike_collision(KodamaState * kodama_state,
             }
         }
     }
-    for(unsigned short i=0; i<RAINSPRITE_MAX_SPRITES; i++)
+    for(unsigned char i=0; i<RAINSPRITE_MAX_SPRITES; i++)
     {
         if(rainsprites[i].alive)
         {

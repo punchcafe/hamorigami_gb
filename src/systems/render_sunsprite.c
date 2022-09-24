@@ -9,7 +9,7 @@ extern unsigned char sunsprite_channeling_frames [];
 
 void system_render_sunsprite(SunspriteInstance * instances, InstanceRenderState * render_states){
     // TODO: Have single animation clock
-    for(unsigned short i = 0; i < SUNSPRITE_MAX_SPRITES; i++)
+    for(unsigned char i = 0; i < SUNSPRITE_MAX_SPRITES; i++)
     {
         if(instances[i].alive)
         {

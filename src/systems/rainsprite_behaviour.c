@@ -51,7 +51,7 @@ void _system_rainsprite_behaviour_single_sprite(RainspriteState * state, BonsaiS
 
 void system_rainsprite_behaviour(RainspriteInstance * rainsprites, BonsaiState * bonsai_state){
     // TODO: add kodama is_striking check here and do collision resolution
-    for(unsigned short i=0; i<RAINSPRITE_MAX_SPRITES; i++)
+    for(unsigned char i=0; i<RAINSPRITE_MAX_SPRITES; i++)
     {
         if(rainsprites[i].alive)
         {
@@ -62,7 +62,7 @@ void system_rainsprite_behaviour(RainspriteInstance * rainsprites, BonsaiState *
 
 void system_rainsprite_behaviour_add_sprite(RainspriteInstance * rainsprites, int x_start, int y_start)
 {
-    for(unsigned short i=0; i<RAINSPRITE_MAX_SPRITES; i++)
+    for(unsigned char i=0; i<RAINSPRITE_MAX_SPRITES; i++)
     {
         if(!rainsprites[i].alive)
         {

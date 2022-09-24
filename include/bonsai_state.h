@@ -11,30 +11,30 @@
 
 typedef struct {
     Vector position;
-    unsigned short level;
-    unsigned short level_time_remaining;
-    unsigned short water_level;
+    unsigned char level;
+    unsigned char level_time_remaining;
+    unsigned char water_level;
     // Accumulated change to water level over a single cycle.
     short water_level_delta;
-    unsigned short hp;
+    unsigned char hp;
     // precalculated caching
-    unsigned short x_left;
-    unsigned short x_right;
-    unsigned short y_up;
-    unsigned short y_down;
-    unsigned short half_width;
-    unsigned short half_height;
+    unsigned char x_left;
+    unsigned char x_right;
+    unsigned char y_up;
+    unsigned char y_down;
+    unsigned char half_width;
+    unsigned char half_height;
 } BonsaiState;
 
 void bonsai_state_init(BonsaiState * state);
 
-void bonsai_state_increase_level(BonsaiState * state, unsigned short delta);
+void bonsai_state_increase_level(BonsaiState * state, unsigned char delta);
 
-void bonsai_state_decrease_level(BonsaiState * state, unsigned short delta);
+void bonsai_state_decrease_level(BonsaiState * state, unsigned char delta);
 
 void bonsai_state_apply_delta(BonsaiState * state);
 
 unsigned char bonsai_state_inside_bonsai(BonsaiState * state, Vector * vec);
 
-unsigned char bonsai_state_update_size(BonsaiState * state, unsigned short half_width, unsigned short half_height);
+unsigned char bonsai_state_update_size(BonsaiState * state, unsigned char half_width, unsigned char half_height);
 #endif

@@ -18,12 +18,12 @@ unsigned char bonsai_state_inside_bonsai(BonsaiState * state, Vector * vec)
     return (x > state->x_left && x < state->x_right) && (y > state->y_up && y < state->y_down);
 }
 
-void bonsai_state_increase_level(BonsaiState * state, unsigned short delta)
+void bonsai_state_increase_level(BonsaiState * state, unsigned char delta)
 {
     state->water_level_delta += delta;
 }
 
-void bonsai_state_decrease_level(BonsaiState * state, unsigned short delta)
+void bonsai_state_decrease_level(BonsaiState * state, unsigned char delta)
 {
     state->water_level_delta -= delta;
 }
@@ -50,7 +50,7 @@ void bonsai_state_apply_delta(BonsaiState * state)
     state->water_level_delta = 0;
 }
 
-unsigned char bonsai_state_update_size(BonsaiState * state, unsigned short half_width, unsigned short half_height)
+unsigned char bonsai_state_update_size(BonsaiState * state, unsigned char half_width, unsigned char half_height)
 {
     state->x_left = vec_x(&state->position) - half_width;
     state->x_right = vec_x(&state->position) + half_width;

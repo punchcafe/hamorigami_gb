@@ -7,10 +7,10 @@ typedef enum {R_S_DYING, R_S_CHANNELING, R_S_MOVING, R_S_FALLING} RainspriteStat
 
 typedef struct {
     Vector position;
-    unsigned short sprite_num;
+    unsigned char sprite_num;
     RainspriteStates state;
-    unsigned short counter;
+    unsigned char counter;
 } RainspriteState;
 
-void rainsprite_state_init(RainspriteState * state, unsigned short sprite_num, unsigned short starting_x, unsigned short starting_y);
+void rainsprite_state_init(RainspriteState * state, unsigned char sprite_num, unsigned char starting_x, unsigned char starting_y);
 #endif

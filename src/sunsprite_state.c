@@ -1,5 +1,5 @@
 #include "../include/sunsprite_state.h"
-void sunsprite_state_init(SunspriteState * state, unsigned short sprite_num,unsigned short x_start, unsigned short y_start)
+void sunsprite_state_init(SunspriteState * state, unsigned char sprite_num,unsigned char x_start, unsigned char y_start)
 {
     state->state = S_S_MOVING;
     state->explosion_countdown = 180;

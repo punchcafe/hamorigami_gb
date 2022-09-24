@@ -1,5 +1,5 @@
 #include "../include/rainsprite_state.h"
-void rainsprite_state_init(RainspriteState * state, unsigned short sprite_num,unsigned short x_start, unsigned short y_start)
+void rainsprite_state_init(RainspriteState * state, unsigned char sprite_num,unsigned char x_start, unsigned char y_start)
 {
     state->state = R_S_FALLING;
     state->counter = 180;

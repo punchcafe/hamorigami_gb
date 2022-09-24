@@ -31,7 +31,7 @@
 #include<gb/gb.h>
 
 extern const SpriteFactoryCommand sprite_commands [];
-extern const unsigned short sprite_commands_size;
+extern const unsigned char sprite_commands_size;
 
 extern const unsigned char sunsprite_tile_data [];
 extern const unsigned char rainsprite_tile_data [];

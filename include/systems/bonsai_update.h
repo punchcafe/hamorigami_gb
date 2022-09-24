@@ -6,13 +6,13 @@
 // TODO: extract
 // includes level 0
 #define BONSAI_TOTAL_LEVELS 2
-unsigned short level_second_durations [] = {20, 40, 60};
-unsigned short bonsai_half_widths [] = {16, 32, 48};
-unsigned short bonsai_half_heights [] = {16, 32, 48};
+unsigned char level_second_durations [] = {20, 40, 60};
+unsigned char bonsai_half_widths [] = {16, 32, 48};
+unsigned char bonsai_half_heights [] = {16, 32, 48};
 
 
 typedef struct {
-    unsigned short ticks;
+    unsigned char ticks;
 } BonsaiUpdateState;
 
 void _system_bonsai_update_hit_points(BonsaiState * state)
@@ -34,7 +34,7 @@ void _system_bonsai_update_hit_points(BonsaiState * state)
 void _system_bonsai_update_level_up(BonsaiState * state)
 {
     // TODO make more level specific
-    unsigned short new_level = state->level + 1;
+    unsigned char new_level = state->level + 1;
     state->level = new_level;
     state->level_time_remaining = level_second_durations[new_level];
     bonsai_state_update_size(state, bonsai_half_widths[new_level], bonsai_half_heights[new_level]);

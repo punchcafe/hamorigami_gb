@@ -20,7 +20,7 @@ typedef enum {
 typedef struct {
     Vector position;
     Vector velocity;
-    unsigned short remaining_fly;
+    unsigned char remaining_fly;
     KodamaStates state;
 
     unsigned char is_striking;

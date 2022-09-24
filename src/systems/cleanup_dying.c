@@ -4,7 +4,7 @@
 void system_cleanup_dying(RainspriteInstance * rainsprite_instances, SunspriteInstance * sunsprite_instances)
 {
     // Implicit: rely on both having same size for now
-    for(unsigned short i=0; i<SUNSPRITE_MAX_SPRITES; i++)
+    for(unsigned char i=0; i<SUNSPRITE_MAX_SPRITES; i++)
     {
         if(sunsprite_instances[i].alive && sunsprite_instances[i].state.state == S_S_DYING)
         {

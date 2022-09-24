@@ -5,10 +5,10 @@
 #include "../../include/systems/rainsprite_behaviour.h"
 
 typedef struct {
-    unsigned short total_number_of_commands;
-    unsigned short tick;
-    unsigned short next_command;
-    unsigned short current_delay;
+    unsigned char total_number_of_commands;
+    unsigned char tick;
+    unsigned char next_command;
+    unsigned char current_delay;
 } SpriteFactoryState;
 
 typedef enum {
@@ -17,11 +17,11 @@ typedef enum {
 } SpriteType;
 
 typedef struct {
-    unsigned short starting_x;
-    unsigned short starting_y;
+    unsigned char starting_x;
+    unsigned char starting_y;
     SpriteType type;
     // Time (seconds) until next command
-    unsigned short delay;
+    unsigned char delay;
 } SpriteFactoryCommand;
 
 void system_sprite_factory(SpriteFactoryState * proc_state, 

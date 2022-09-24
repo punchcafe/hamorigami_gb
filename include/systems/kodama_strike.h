@@ -3,8 +3,8 @@
 #include "../kodama_state.h"
 
 typedef struct {
-    unsigned short y_displace;
-    unsigned short cooldown;
+    unsigned char y_displace;
+    unsigned char cooldown;
 } SystemKodamaStrikeState;
 
 void system_kodama_strike(SystemKodamaStrikeState * proc_state, KodamaState * state);

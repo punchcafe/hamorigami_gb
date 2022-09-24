@@ -10,7 +10,7 @@ extern unsigned char rainsprite_channeling_frames [];
 void system_render_rainsprite(RainspriteInstance * instances, InstanceRenderState * render_states){
     
     // TODO: Have single animation clock
-    for(unsigned short i = 0; i < RAINSPRITE_MAX_SPRITES; i++)
+    for(unsigned char i = 0; i < RAINSPRITE_MAX_SPRITES; i++)
     {
         // TODO: from here to switch can be extracted for generic functionality
         if(instances[i].alive)

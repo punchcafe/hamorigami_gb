@@ -3,9 +3,9 @@
 
 typedef struct 
 {
-    unsigned short ticks;
-    unsigned short current_frame;
-    unsigned short last_enum_state;
+    unsigned char ticks;
+    unsigned char current_frame;
+    unsigned char last_enum_state;
 } InstanceRenderState;
 
 #endif
