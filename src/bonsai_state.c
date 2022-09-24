@@ -54,8 +54,8 @@ unsigned char bonsai_state_update_size(BonsaiState * state, unsigned char half_w
 {
     state->x_left = vec_x(&state->position) - half_width;
     state->x_right = vec_x(&state->position) + half_width;
-    state->y_up = vec_y(&state->position) - half_height;
-    state->y_down = vec_y(&state->position) + half_height;
+    state->y_up = vec_y(&state->position) - half_height * 2;
+    // y down doesn't change as we only grow up and out
     state->half_width = half_width;
     state->half_height = half_height;
 }
