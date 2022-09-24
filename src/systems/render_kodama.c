@@ -5,6 +5,7 @@
 
 extern KodamaAnimation kodama_run_animation;
 extern KodamaAnimation kodama_normal_animation;
+extern KodamaAnimation kodama_flying_animation;
 
 #define KODAMA_SPRITE_OFFSET 1
 
@@ -29,7 +30,7 @@ KodamaAnimation * current_animation(KodamaState * state)
     switch(state->state)
     {
         case K_S_FLYING:
-            return  &kodama_normal_animation;
+            return  &kodama_flying_animation;
         default:
             if(vec_x(&state->velocity) == 0)
             {
