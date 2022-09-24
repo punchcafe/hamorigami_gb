@@ -17,9 +17,9 @@ const unsigned char _temp_bonsai_tiles [] = {
 void _system_render_bonsai_state_icons(BonsaiState * state)
 {
     unsigned char temp_array [1];
-    if(state->water_level < 30){
+    if(state->water_level < 12){
         temp_array[0] = BONSAI_FIRE_ICON_INDEX;
-    } else if(state->water_level < 60){
+    } else if(state->water_level < 18){
         temp_array[0] = BONSAI_OK_ICON_INDEX;
     } else {
         temp_array[0] = BONSAI_WATER_ICON_INDEX;
