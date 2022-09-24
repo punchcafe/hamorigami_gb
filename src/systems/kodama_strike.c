@@ -32,7 +32,6 @@ void _system_kodama_strike_update_strike(SystemKodamaStrikeState * proc_state, K
     state->hb_x_left = x_left;
     state->hb_x_right = x_right;
 
-    move_sprite(20, state->hb_x_left,state->hb_y_up);
 }
 
 void system_kodama_strike(SystemKodamaStrikeState * proc_state, KodamaState * state)
