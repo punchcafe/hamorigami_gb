@@ -148,6 +148,14 @@ const unsigned char kodama_data [] = {
 
 extern void _kodama_animation_setup_pattern_table();
 
+extern const unsigned char * const main_loop_beta_Data[];
+
+void setup_music_main()
+{
+  gbt_play(main_loop_beta_Data, 1, 7);
+  gbt_loop(1);
+}
+
 void setup_sprites_render()
 {
   set_sprite_data(SUNSPRITE_PATTERN_OFFSET, 14, sunsprite_tile_data);
@@ -157,6 +165,7 @@ void setup_sprites_render()
 
 int main()
 {
+    setup_music_main();
     setup_sprites_render();
 
     for(int i=0; i < 240; i++)
@@ -183,11 +192,10 @@ int main()
     SHOW_SPRITES;
     SHOW_BKG;
     SPRITES_8x16;
-    // gbt_play(party_bgm_loop_Data, 1, 7);
     while(1)
     {
         wait_vbl_done();
-        // gbt_update();
+        gbt_update();
         system_sprite_factory(&sprite_factory_state, sprite_commands, rainsprite_instances, sunsprite_instances);
         system_gravity(&kodama_state);
         system_horizontal_input(&kodama_state);

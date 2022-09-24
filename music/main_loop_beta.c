@@ -1,7 +1,7 @@
 
 // File created by mod2gbt
 
-#pragma bank 2
+#pragma bank 1
 
 const unsigned char main_loop_beta0[] = {
   0x00, 0x80,0x00, 0x00, 0x00,
@@ -204,7 +204,7 @@ const unsigned char main_loop_beta2[] = {
   0x00, 0x00, 0x42,0x02, 0x00
 };
 
-const void __at(2) __bank_main_loop_beta_Data;
+const void __at(1) __bank_main_loop_beta_Data;
 const unsigned char * const main_loop_beta_Data[] = {
     main_loop_beta0,
     main_loop_beta1,
