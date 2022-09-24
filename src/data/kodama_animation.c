@@ -7,7 +7,7 @@
 #define KODAMA_NORMAL_SPRITE_OFFSET KODAMA_RUN_SPRITE_OFFSET + 14
 #define KODAMA_FLYING_SPRITE_OFFSET KODAMA_NORMAL_SPRITE_OFFSET + 16
 #define KODAMA_STRIKING_SPRITE_OFFSET KODAMA_FLYING_SPRITE_OFFSET + 16
-#define EMPTY_TILE 0
+#define EMPTY_TILE_OFFSET 0
 // STRIKING_TILES
 
 const unsigned char kodama_striking_pallette [] = {
@@ -121,8 +121,8 @@ const unsigned char kodama_flying_sprite_4_anim [] = {
 };
 
 const unsigned char kodama_flying_sprite_5_anim [] = {
-    EMPTY_TILE,
-    EMPTY_TILE 
+    EMPTY_TILE_OFFSET,
+    EMPTY_TILE_OFFSET 
 };
 
 const unsigned char * kodama_flying_animation_tiles [] = {
@@ -201,8 +201,8 @@ const unsigned char kodama_normal_sprite_4_anim [] = {
 };
 
 const unsigned char kodama_normal_sprite_5_anim [] = {
-    EMPTY_TILE,
-    EMPTY_TILE 
+    EMPTY_TILE_OFFSET,
+    EMPTY_TILE_OFFSET 
 };
 
 const unsigned char * kodama_normal_animation_tiles [] = {
@@ -275,8 +275,8 @@ const unsigned char kodama_run_sprite_4_anim [] = {
 };
 
 const unsigned char kodama_run_sprite_5_anim [] = {
-    EMPTY_TILE,
-    EMPTY_TILE 
+    EMPTY_TILE_OFFSET,
+    EMPTY_TILE_OFFSET 
 };
 
 const unsigned char * kodama_run_animation_tiles [] = {
@@ -289,6 +289,12 @@ const unsigned char * kodama_run_animation_tiles [] = {
 
 const KodamaAnimation kodama_run_animation = {2, kodama_run_animation_tiles};
 
+const unsigned char EMPTY_TILE_OFFSET_pallette[] = {
+    0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+    0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+    0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+    0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
+};
 
 const unsigned char kodama_run_pallette[] = {
     // 32
@@ -330,8 +336,9 @@ const unsigned char kodama_run_pallette[] = {
 
 void _kodama_animation_setup_pattern_table()
 {
+    set_sprite_data(EMPTY_TILE_OFFSET, 2, EMPTY_TILE_OFFSET_pallette);
     set_sprite_data(KODAMA_RUN_SPRITE_OFFSET, 14, kodama_run_pallette);
     set_sprite_data(KODAMA_NORMAL_SPRITE_OFFSET, 12, kodama_normal_pallette);
     set_sprite_data(KODAMA_FLYING_SPRITE_OFFSET, 16, kodama_flying_pallette);
-    set_sprite_data(KODAMA_STRIKING_SPRITE_OFFSET, 16, kodama_striking_pallette);
+    set_sprite_data(KODAMA_STRIKING_SPRITE_OFFSET, 20, kodama_striking_pallette);
 }

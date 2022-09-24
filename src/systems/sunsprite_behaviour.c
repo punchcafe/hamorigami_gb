@@ -35,7 +35,7 @@ void system_sunsprite_behaviour_add_sprite(SunspriteInstance * sunsprites, int x
     {
         if(!sunsprites[i].alive)
         {
-            sunsprite_state_init(&sunsprites[i].state, i+5, x_start, y_start);
+            sunsprite_state_init(&sunsprites[i].state, i+6, x_start, y_start);
             sunsprites[i].alive = 0x01;
             return;
         }

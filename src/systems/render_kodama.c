@@ -15,7 +15,7 @@ unsigned char delay_counter = 0;
 
 void kodama_animation_bump_frame(KodamaAnimation * animation, unsigned char frame)
 {
-    for(unsigned char i = 0; i < 4; i++)
+    for(unsigned char i = 0; i < 5; i++)
     {
         set_sprite_tile(KODAMA_SPRITE_OFFSET + i, animation->frames[i][frame]);
     }
@@ -70,22 +70,26 @@ void system_render_kodama(KodamaState * state)
         set_sprite_prop(2, get_sprite_prop(0) | S_FLIPX);
         set_sprite_prop(3, get_sprite_prop(0) | S_FLIPX);
         set_sprite_prop(4, get_sprite_prop(0) | S_FLIPX);
+        set_sprite_prop(5, get_sprite_prop(0) | S_FLIPX);
 
         move_sprite(2,vec_x(position),vec_y(position));
         move_sprite(1,vec_x(position)+8,vec_y(position));
         move_sprite(4,vec_x(position),vec_y(position)+16);
         move_sprite(3,vec_x(position)+8,vec_y(position)+16);
+        move_sprite(5,vec_x(position)-8,vec_y(position)+16);
     } else {
         // TODO: optimise so only done once per direction change
         set_sprite_prop(1, get_sprite_prop(0) & ~S_FLIPX);
         set_sprite_prop(2, get_sprite_prop(0) & ~S_FLIPX);
         set_sprite_prop(3, get_sprite_prop(0) & ~S_FLIPX);
         set_sprite_prop(4, get_sprite_prop(0) & ~S_FLIPX);
+        set_sprite_prop(5, get_sprite_prop(0) & ~S_FLIPX);
 
         move_sprite(1,vec_x(position),vec_y(position));
         move_sprite(2,vec_x(position)+8,vec_y(position));
         move_sprite(3,vec_x(position),vec_y(position)+16);
         move_sprite(4,vec_x(position)+8,vec_y(position)+16);
+        move_sprite(5,vec_x(position)+16,vec_y(position)+16);
     }
 }
 
