@@ -1,6 +1,8 @@
 // ######## STRIKE
 // SPRITES: 1 TOP LEFT, 2 TOP RIGHT... 5 BROOM
 #include "../../include/kodama_animation.h"
+#include <gb/gb.h>
+
 #define KODAMA_RUN_SPRITE_OFFSET 74
 #define EMPTY_TILE 0
 
@@ -79,3 +81,8 @@ unsigned char kodama_run_pallette[] = {
     0x0E,0xF5,0x5E,0xA6,0xBC,0x46,0x7E,0x88,
     0xCC,0x04,0x00,0x00,0x00,0x00,0x00,0x00
 };
+
+void _kodama_animation_setup_pattern_table()
+{
+    set_sprite_data(KODAMA_RUN_SPRITE_OFFSET, 14, kodama_run_pallette);
+}

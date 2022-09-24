@@ -146,11 +146,13 @@ const unsigned char kodama_data [] = {
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
 };
 
+extern void _kodama_animation_setup_pattern_table();
+
 void setup_sprites_render()
 {
   set_sprite_data(SUNSPRITE_PATTERN_OFFSET, 14, sunsprite_tile_data);
   set_sprite_data(RAINSPRITE_PATTERN_OFFSET, 30, rainsprite_tile_data);
-  set_sprite_data(74, 14, kodama_run_pallette);
+  _kodama_animation_setup_pattern_table();
 }
 
 int main()
