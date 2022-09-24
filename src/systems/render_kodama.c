@@ -6,6 +6,7 @@
 extern KodamaAnimation kodama_run_animation;
 extern KodamaAnimation kodama_normal_animation;
 extern KodamaAnimation kodama_flying_animation;
+extern KodamaAnimation kodama_striking_animation;
 
 #define KODAMA_SPRITE_OFFSET 1
 
@@ -24,8 +25,7 @@ KodamaAnimation * current_animation(KodamaState * state)
 {
     if(state->is_striking)
     {
-        // TODO: update with striking
-        return &kodama_normal_animation;
+        return &kodama_striking_animation;
     }
     switch(state->state)
     {

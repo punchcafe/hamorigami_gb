@@ -165,10 +165,6 @@ int main()
       set_bkg_tiles(i%20, i/16, 1, 1, tiles);
     }
     // TODO: extract setup to functions with constants
-    set_sprite_data(0, 8, kodama_sprite_data);
-    set_sprite_data(8, 9, sunsprite_data);
-    set_sprite_data(10, 11, rainsprite_data);
-    set_sprite_data(15, 1, black_square_data);
     set_bkg_data(1, 1, black_square_data);
     set_bkg_data(2, 16, bonsai_data);
     set_bkg_data(BONSAI_STATE_ICON_OFFSET, 3, bonsai_state_icons);
