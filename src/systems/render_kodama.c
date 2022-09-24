@@ -4,6 +4,7 @@
 #include<gb/gb.h>
 
 extern KodamaAnimation kodama_run_animation;
+extern KodamaAnimation kodama_normal_animation;
 
 #define KODAMA_SPRITE_OFFSET 1
 
@@ -18,14 +19,36 @@ void kodama_animation_bump_frame(KodamaAnimation * animation, unsigned char fram
     }
 }
 
+KodamaAnimation * current_animation(KodamaState * state)
+{
+    if(state->is_striking)
+    {
+        // TODO: update with striking
+        return &kodama_normal_animation;
+    }
+    switch(state->state)
+    {
+        case K_S_FLYING:
+            return  &kodama_normal_animation;
+        default:
+            if(vec_x(&state->velocity) == 0)
+            {
+                return &kodama_normal_animation;
+            }
+            return &kodama_run_animation;
+    }
+}
+
 void system_render_kodama(KodamaState * state)
 {
+    // TODO: extract this to handle animation change
     if(delay_counter > 20)
     {
         delay_counter = 0;
-    // set to always running for test
-    anim_tick = (anim_tick + 1) % kodama_run_animation.loop_size;
-    kodama_animation_bump_frame(&kodama_run_animation, anim_tick); 
+        // set to always running for test
+        anim_tick = (anim_tick + 1) % kodama_run_animation.loop_size;
+        KodamaAnimation * next_anim = current_animation(state);
+        kodama_animation_bump_frame(next_anim, anim_tick); 
     }
     delay_counter++;
     Vector * position = &(state->position);
