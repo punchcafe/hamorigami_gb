@@ -40,17 +40,26 @@ KodamaAnimation * current_animation(KodamaState * state)
     }
 }
 
+// TODO: remove for proc state approach
+KodamaAnimation * last_anim = 0xff;
+
 void system_render_kodama(KodamaState * state)
 {
     // TODO: extract this to handle animation change
-    if(delay_counter > 20)
+    KodamaAnimation * this_animation = current_animation(state);
+    if(delay_counter > 20 || this_animation != last_anim)
     {
         delay_counter = 0;
         // set to always running for test
-        anim_tick = (anim_tick + 1) % kodama_run_animation.loop_size;
-        KodamaAnimation * next_anim = current_animation(state);
-        kodama_animation_bump_frame(next_anim, anim_tick); 
+        if(this_animation != last_anim)
+        {
+            anim_tick = 0;
+        } else {
+            anim_tick = (anim_tick + 1) % kodama_run_animation.loop_size;
+        }
+        kodama_animation_bump_frame(this_animation, anim_tick); 
     }
+    last_anim = this_animation;
     delay_counter++;
     Vector * position = &(state->position);
 
