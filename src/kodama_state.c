@@ -3,5 +3,5 @@
 void kodama_state_land(KodamaState * state)
 {
     state->remaining_fly = 50;
-    state->state = K_S_GROUNDED;
+    state->state = K_S_MOVING;
 }

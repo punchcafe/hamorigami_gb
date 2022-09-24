@@ -6,14 +6,13 @@ const Vector _system_flying_input_flying_change = {0, -2};
 
 void system_flying_input(KodamaState * state)
 {
-    if(state->remaining_fly > 0)
+    unsigned char pressing_fly = joypad() & J_A;
+    if(state->remaining_fly > 0 && pressing_fly)
     {
-        // can use observer pattern to avoid doing this every time
         state->state = K_S_FLYING;
-        if(joypad() & J_A)
-        {
-            state->remaining_fly--;
-            vec_add(&state->velocity, &_system_flying_input_flying_change);
-        }
+        state->remaining_fly--;
+        vec_add(&state->velocity, &_system_flying_input_flying_change);
+    } else {
+        state->state = K_S_MOVING;
     }
 }

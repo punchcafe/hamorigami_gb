@@ -9,7 +9,7 @@
 #include "./util/vec.h"
 
 typedef enum {
-    K_S_FLYING, K_S_GROUNDED 
+    K_S_MOVING, K_S_FLYING 
 } KodamaStates;
 
 
