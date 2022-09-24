@@ -42,7 +42,7 @@ void _system_bonsai_update_level_up(BonsaiState * state)
 
 void _system_bonsai_update_water_level(BonsaiState * state)
 {
-    if(state->water_level > 0) state->water_level--;
+    bonsai_state_decrease_level(state, 1);
 }
 
 

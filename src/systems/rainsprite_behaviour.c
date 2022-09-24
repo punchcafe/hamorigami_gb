@@ -16,7 +16,7 @@ void _system_rainsprite_behaviour_channeling(RainspriteState * state, BonsaiStat
     state->counter--;
     if(state->counter == 0)
     {
-        bonsai_state->water_level+= 2;
+        //bonsai_state_increase_level(bonsai_state, 2);
         state->counter = 60;
     }
 }

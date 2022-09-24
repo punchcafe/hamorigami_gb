@@ -21,6 +21,7 @@
 #include "../include/systems/sunsprite_behaviour.h"
 #include "../include/systems/rainsprite_behaviour.h"
 #include "../include/systems/bonsai_update.h"
+#include "../include/systems/bonsai_apply_water_delta.h"
 #include "../include/constants/animation_constants.h"
 
 #include "../external/include/gbt_player.h"
@@ -214,5 +215,6 @@ int main()
         system_render_rainsprite(rainsprite_instances, rainsprite_render_states);
         system_render_sunsprite(sunsprite_instances, sunsprite_render_states);
         system_bonsai_update(&bonsai_update_state, &bonsai_state);
+        system_bonsai_apply_water_delta(&bonsai_state);
     }
 }

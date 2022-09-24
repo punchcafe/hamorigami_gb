@@ -13,7 +13,7 @@ void _system_sunsprite_behaviour_single_sprite(SunspriteState * state, BonsaiSta
         state->explosion_countdown--;
         if(state->explosion_countdown == 0)
         {
-            bonsai_state->water_level--;
+            //bonsai_state_decrease_level(bonsai_state, 1);
             state->explosion_countdown = 60;
             // do explosion
         }
