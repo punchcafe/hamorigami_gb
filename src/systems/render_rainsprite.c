@@ -20,10 +20,10 @@ void system_render_rainsprite(RainspriteInstance * instances, InstanceRenderStat
             move_sprite(state->sprite_num,vec_x(&state->position),vec_y(&state->position));
             if(render_state->last_enum_state != state->state)
             {
-                render_state->ticks = 0;
+                // Set to 20 to force an animation
+                render_state->ticks = 20;
                 render_state->last_enum_state = state->state;
                 render_state->current_frame = 0;
-                continue;
                 // Return early so we don't check tickets
             }
             if(render_state->ticks < 20)
