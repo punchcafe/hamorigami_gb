@@ -6,5 +6,5 @@ const unsigned char background_index_array [] = {0x08,0x08,0x08,0x08,0x08,0x08,0
 void setup_background()
 {
     set_bkg_data(0, 229, background_pattern_block);
-    set_bkg_tiles(0, 0, 20, 18, &background_index_array[1040]);
+    set_bkg_tiles(0, 0, 20, 18, &background_index_array[1080]);
 }
