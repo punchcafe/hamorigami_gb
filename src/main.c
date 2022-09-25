@@ -70,13 +70,13 @@ extern const unsigned char * const menu_loop_Data[];
 
 void setup_music_main()
 {
-  gbt_play(game_main_loop_Data, 1, 7);
+  gbt_play(game_main_loop_Data, 1, 6);
   gbt_loop(1);
 }
 
 void setup_end_music()
 {
-  gbt_play(menu_loop_Data, 1, 7);
+  gbt_play(menu_loop_Data, 1, 6);
   gbt_loop(1);
 }
 
