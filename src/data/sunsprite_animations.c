@@ -9,6 +9,7 @@ const unsigned char sunsprite_normal_frames [] = {
 const unsigned char sunsprite_normal_frame_count = sizeof(sunsprite_normal_frames)  / sizeof(char);
 
 const unsigned char sunsprite_dying_frames [] = {
+    SUNSPRITE_PATTERN_OFFSET, 
     0x0a + SUNSPRITE_PATTERN_OFFSET, 
     0x0c + SUNSPRITE_PATTERN_OFFSET,
     0x0e + SUNSPRITE_PATTERN_OFFSET,

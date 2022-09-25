@@ -8,7 +8,7 @@ void system_cleanup_dying(RainspriteInstance * rainsprite_instances, SunspriteIn
     {
         if(sunsprite_instances[i].alive && sunsprite_instances[i].state.state == S_S_DYING)
         {
-            if(sunsprite_instances[i].state.explosion_countdown < 90)
+            if(sunsprite_instances[i].state.explosion_countdown < 58)
             {
                 sunsprite_instances[i].state.explosion_countdown++;
             } else {
@@ -19,7 +19,7 @@ void system_cleanup_dying(RainspriteInstance * rainsprite_instances, SunspriteIn
         }
         if(rainsprite_instances[i].alive && rainsprite_instances[i].state.state == R_S_DYING)
         {
-            if(rainsprite_instances[i].state.counter < 90)
+            if(rainsprite_instances[i].state.counter < 58)
             {
                 rainsprite_instances[i].state.counter++;
             } else {

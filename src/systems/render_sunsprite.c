@@ -33,11 +33,8 @@ void system_render_sunsprite(SunspriteInstance * instances, InstanceRenderState 
          //number of frames in one cycle for both channeling and normal
             switch(state->state){
                 case S_S_DYING:
-                    if(render_state->current_frame < 3)
-                    {
-                        set_sprite_tile(state->sprite_num, sunsprite_dying_frames[render_state->current_frame]);
-                        render_state->current_frame = (render_state->current_frame + 1);
-                    }
+                    set_sprite_tile(state->sprite_num, sunsprite_dying_frames[render_state->current_frame]);
+                    render_state->current_frame = (render_state->current_frame + 1) % 4; //number of frames in one cycle for both channeling and normal
                     break;
                 case S_S_CHANNELING:
                     set_sprite_tile(state->sprite_num, sunsprite_channeling_frames[render_state->current_frame]);
