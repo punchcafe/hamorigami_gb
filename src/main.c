@@ -65,11 +65,18 @@ extern SpriteFactoryState sprite_factory_state;
 
 extern void _kodama_animation_setup_pattern_table();
 
-extern const unsigned char * const main_loop_beta_Data[];
+extern const unsigned char * const game_main_loop_Data[];
+extern const unsigned char * const menu_loop_Data[];
 
 void setup_music_main()
 {
-  gbt_play(main_loop_beta_Data, 1, 7);
+  gbt_play(game_main_loop_Data, 1, 7);
+  gbt_loop(1);
+}
+
+void setup_end_music()
+{
+  gbt_play(menu_loop_Data, 1, 7);
   gbt_loop(1);
 }
 
@@ -128,6 +135,7 @@ int main()
     }
     system_render_bonsai_result(&game_state);
     kodama_state.velocity.x = 0;
+    setup_end_music();
     while(1)
     {
         wait_vbl_done();
