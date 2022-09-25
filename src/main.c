@@ -133,7 +133,7 @@ int main()
       sunsprite_instances[i].state.state = S_S_DYING;
       rainsprite_instances[i].state.state = R_S_DYING;
     }
-    system_render_bonsai_result(&game_state);
+    system_render_bonsai_result(game_state);
     kodama_state.velocity.x = 0;
     setup_end_music();
     while(1)

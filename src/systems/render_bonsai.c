@@ -28,7 +28,7 @@ void system_render_bonsai(BonsaiRenderState * render_state, BonsaiState * bonsai
     _system_render_bonsai_state_icons(bonsai_state);
 }
 
-void system_render_bonsai_result(GameState * game_state)
+void system_render_bonsai_result(GameState game_state)
 {
     if(game_state == G_S_WIN)
     {

@@ -15,6 +15,6 @@ typedef struct {
 } BonsaiRenderState;
 
 void system_render_bonsai(BonsaiRenderState * render_state, BonsaiState * bonsai_state);
-void system_render_bonsai_result(GameState * render_state);
+void system_render_bonsai_result(GameState render_state);
 
 #endif

@@ -66,7 +66,8 @@ void system_rainsprite_behaviour_add_sprite(RainspriteInstance * rainsprites, in
     {
         if(!rainsprites[i].alive)
         {
-            rainsprite_state_init(&rainsprites[i].state, i+10, x_start, y_start);
+            // Make constant to make sure this is clear that this is after the max number of sunsprites 
+            rainsprite_state_init(&rainsprites[i].state, i+11+1, x_start, y_start);
             rainsprites[i].alive = 0x01;
             return;
         }

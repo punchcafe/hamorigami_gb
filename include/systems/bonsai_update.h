@@ -7,9 +7,9 @@
 // TODO: extract
 // includes level 0
 #define BONSAI_TOTAL_LEVELS 2
-unsigned char level_second_durations [] = {20, 40, 60};
-unsigned char bonsai_half_widths [] = {16, 32, 48};
-unsigned char bonsai_half_heights [] = {16, 32, 48};
+unsigned char level_second_durations [] = {20, 30, 45};
+unsigned char bonsai_half_widths [] = {16, 24, 32};
+unsigned char bonsai_half_heights [] = {16, 24, 32};
 
 
 typedef struct {
@@ -33,7 +33,7 @@ void _system_bonsai_update_hit_points(BonsaiState * state)
     } else if(state->water_level < 12){
         _system_bonsai_decrease_hp_by(state, 2);
     } else if(state->water_level < 18){
-        if(state->hp > BONSAI_STATE_MAX_HP) state->hp++;
+        if(state->hp < BONSAI_STATE_MAX_HP) state->hp++;
     } else if(state->water_level < 24){
         _system_bonsai_decrease_hp_by(state, 2);
     } else {

@@ -3,7 +3,7 @@
 
 #include "./rainsprite_state.h"
 
-#define RAINSPRITE_MAX_SPRITES 20
+#define RAINSPRITE_MAX_SPRITES 5
 
 typedef struct {
     unsigned char alive;
