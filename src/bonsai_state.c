@@ -6,7 +6,7 @@ void bonsai_state_init(BonsaiState * state)
     state->x_right = vec_x(&state->position) + BONSAI_WIDTH;
     state->y_up = vec_y(&state->position) - BONSAI_HEIGHT;
     state->y_down = vec_y(&state->position) + BONSAI_HEIGHT;
-    state->hp = 100;
+    state->hp = BONSAI_STATE_MAX_HP;
     state->water_level = 17;
     state->water_level_delta = 0;
 }

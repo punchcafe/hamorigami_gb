@@ -2,6 +2,7 @@
 #define SYSTEM_BONSAI_UPDATE_H
 
 #include "../bonsai_state.h"
+#include "../game_state.h"
 
 // TODO: extract
 // includes level 0
@@ -15,18 +16,28 @@ typedef struct {
     unsigned char ticks;
 } BonsaiUpdateState;
 
+void _system_bonsai_decrease_hp_by(BonsaiState * state, unsigned char amount)
+{
+    if(state->hp < amount)
+    {
+        state->hp = 0;
+    } else {
+        state->hp -= amount;
+    }
+}
+
 void _system_bonsai_update_hit_points(BonsaiState * state)
 {
-    if(state->water_level < 10) {
-        state->hp -= 4;
-    } else if(state->water_level < 30){
-        state->hp-=2;
-    } else if(state->water_level < 60){
-        state->hp++;
-    } else if(state->water_level < 80){
-        state->hp -= 2;
+    if(state->water_level < 6) {
+        _system_bonsai_decrease_hp_by(state, 4);
+    } else if(state->water_level < 12){
+        _system_bonsai_decrease_hp_by(state, 2);
+    } else if(state->water_level < 18){
+        if(state->hp > BONSAI_STATE_MAX_HP) state->hp++;
+    } else if(state->water_level < 24){
+        _system_bonsai_decrease_hp_by(state, 2);
     } else {
-        state->hp -= 4;
+        _system_bonsai_decrease_hp_by(state, 4);
     }
 
 }
@@ -53,15 +64,17 @@ void system_bonsai_update_init(BonsaiUpdateState * proc_state, BonsaiState * sta
     bonsai_state_update_size(state, bonsai_half_widths[0], bonsai_half_heights[0]);
 }
 
-void system_bonsai_update(BonsaiUpdateState * proc_state, BonsaiState * state)
+void system_bonsai_update(BonsaiUpdateState * proc_state, BonsaiState * state, GameState * game_state)
 {
-    if(state->hp == 0 || state->level > BONSAI_TOTAL_LEVELS)
+    if(state->hp == 0 )
     {
-        while(1)
-        {
-
-        }
-        // TODO: add win observer and lose observer
+        *game_state= G_S_LOSE;
+        return; 
+    }
+    if(state->level > BONSAI_TOTAL_LEVELS)
+    {
+        *game_state= G_S_WIN;
+        return; 
     }
 
     if(proc_state->ticks != 60)

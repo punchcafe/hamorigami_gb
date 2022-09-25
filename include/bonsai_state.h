@@ -5,6 +5,8 @@
 #define BONSAI_WIDTH 32
 #define BONSAI_HEIGHT 32
 
+#define BONSAI_STATE_MAX_HP 100
+
 #define BONSAI_MAX_WATER_LEVEL 30
 
 #include "./util/vec.h"

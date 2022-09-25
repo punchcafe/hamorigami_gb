@@ -118,8 +118,29 @@ int main()
         system_rainsprite_behaviour(rainsprite_instances, &bonsai_state);
         system_render_rainsprite(rainsprite_instances, rainsprite_render_states);
         system_render_sunsprite(sunsprite_instances, sunsprite_render_states);
-        system_bonsai_update(&bonsai_update_state, &bonsai_state);
+        system_bonsai_update(&bonsai_update_state, &bonsai_state, &game_state);
         system_bonsai_apply_water_delta(&bonsai_state);
+    }
+    for (unsigned char i = 0; i < SUNSPRITE_MAX_SPRITES; i++)
+    {
+      sunsprite_instances[i].state.state = S_S_DYING;
+      rainsprite_instances[i].state.state = R_S_DYING;
+    }
+    system_render_bonsai_result(&game_state);
+    kodama_state.velocity.x = 0;
+    while(1)
+    {
+        wait_vbl_done();
+        gbt_update();
+        system_cleanup_dying(rainsprite_instances, sunsprite_instances);
+        system_gravity(&kodama_state);
+        system_kodama_facing(&kodama_state);
+        system_clamp_velocity(&kodama_state);
+        system_translate_velocity(&kodama_state);
+        system_catch_landing(&kodama_state);
+        system_render_kodama(&kodama_state);
+        system_render_rainsprite(rainsprite_instances, rainsprite_render_states);
+        system_render_sunsprite(sunsprite_instances, sunsprite_render_states);
     }
     
 }

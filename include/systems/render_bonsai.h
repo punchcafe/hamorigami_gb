@@ -2,6 +2,7 @@
 #define SYSTEM_RENDER_BONSAI_H
 
 #include "../bonsai_state.h"
+#include "../game_state.h"
 
 #define BONSAI_STATE_ICON_OFFSET 170
 #define BONSAI_OK_ICON_INDEX BONSAI_STATE_ICON_OFFSET + 0
@@ -13,5 +14,6 @@ typedef struct {
 } BonsaiRenderState;
 
 void system_render_bonsai(BonsaiRenderState * render_state, BonsaiState * bonsai_state);
+void system_render_bonsai_result(GameState * render_state);
 
 #endif

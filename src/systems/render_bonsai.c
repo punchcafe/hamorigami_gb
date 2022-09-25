@@ -27,3 +27,14 @@ void system_render_bonsai(BonsaiRenderState * render_state, BonsaiState * bonsai
     }
     _system_render_bonsai_state_icons(bonsai_state);
 }
+
+void system_render_bonsai_result(GameState * game_state)
+{
+    if(game_state == G_S_WIN)
+    {
+        set_bkg_tiles(0, 0, 20, 18, &background_index_array[1080]);
+
+    } else {
+        set_bkg_tiles(0, 0, 20, 18, &background_index_array[1440]);
+    }
+}
