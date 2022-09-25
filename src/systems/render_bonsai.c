@@ -31,12 +31,6 @@ void system_render_bonsai(BonsaiRenderState * render_state, BonsaiState * bonsai
 {
     if(!(render_state->last_level_rendered == bonsai_state->level))
     {
-        set_bkg_tiles(bonsai_state->x_left/8, 
-                      bonsai_state->y_up/8, 
-                      bonsai_state->half_width/4, // /4 to cancel out * 2 
-                      bonsai_state->half_height/4, 
-                      _temp_bonsai_tiles);
-        render_state->last_level_rendered = bonsai_state->level;
     }
     _system_render_bonsai_state_icons(bonsai_state);
 }
