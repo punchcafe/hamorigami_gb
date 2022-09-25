@@ -14,7 +14,7 @@ void _system_render_bonsai_state_icons(BonsaiState * state)
     } else {
         temp_array[0] = BONSAI_WATER_ICON_INDEX;
     }
-    set_bkg_tiles(15, 10, 1, 1, temp_array);
+    set_bkg_tiles(12, 14, 1, 1, temp_array);
 }
 
 void system_render_bonsai(BonsaiRenderState * render_state, BonsaiState * bonsai_state)
