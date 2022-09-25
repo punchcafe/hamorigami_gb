@@ -135,7 +135,7 @@ InstanceRenderState sunsprite_render_states [SUNSPRITE_MAX_SPRITES];
 RainspriteInstance rainsprite_instances [RAINSPRITE_MAX_SPRITES];
 InstanceRenderState rainsprite_render_states [SUNSPRITE_MAX_SPRITES];
 // TODO: extract instantion of level 1 duration to function calls
-BonsaiState bonsai_state = {{120, 120}, 0, 10, 50, 200};
+BonsaiState bonsai_state = {{80, 120}, 0, 10, 50, 200};
 BonsaiUpdateState bonsai_update_state = {0};
 BonsaiRenderState render_bonsai_state = {BONSAI_TOTAL_LEVELS + 1}; // Larger than possible 
 SystemKodamaStrikeState kodama_strike_state = {0};
