@@ -164,21 +164,17 @@ void setup_sprites_render()
   _kodama_animation_setup_pattern_table();
 }
 
+extern void setup_background();
+
 int main()
 {
+    setup_background();
     setup_music_main();
     setup_sprites_render();
 
-    for(int i=0; i < 240; i++)
-    {
-      unsigned char tiles [] = {0x00};
-      set_bkg_tiles(i%20, i/16, 1, 1, tiles);
-    }
-    // TODO: extract setup to functions with constants
-    set_bkg_data(1, 1, black_square_data);
-    set_bkg_data(2, 16, bonsai_data);
     set_bkg_data(BONSAI_STATE_ICON_OFFSET, 3, bonsai_state_icons);
-    set_bkg_tiles(0, 17, 31, 1, platform_tile_data);
+
+    // TODO: extract setup to functions with constants
     set_sprite_tile(1, 0x00);
     set_sprite_tile(2, 0x02);
     set_sprite_tile(3, 0x04);
