@@ -1,6 +1,7 @@
 #include "../include/kodama_state.h"
 #include "../include/sunsprite_state.h"
 #include "../include/rainsprite_state.h"
+#include "../include/game_state.h"
 #include "../include/bonsai_state.h"
 #include "../include/instance_render_state.h"
 #include "../include/systems/render_kodama.h"
@@ -81,6 +82,8 @@ void setup_sprites_render()
 
 extern void setup_background();
 
+GameState game_state = G_S_PLAYING;
+
 int main()
 {
     setup_background();
@@ -94,7 +97,7 @@ int main()
     SHOW_SPRITES;
     SHOW_BKG;
     SPRITES_8x16;
-    while(1)
+    while(game_state == G_S_PLAYING)
     {
         wait_vbl_done();
         gbt_update();
@@ -118,4 +121,5 @@ int main()
         system_bonsai_update(&bonsai_update_state, &bonsai_state);
         system_bonsai_apply_water_delta(&bonsai_state);
     }
+    
 }
