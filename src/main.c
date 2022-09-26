@@ -68,6 +68,8 @@ extern void _kodama_animation_setup_pattern_table();
 extern const unsigned char * const game_main_loop_Data[];
 extern const unsigned char * const menu_loop_Data[];
 
+extern void setup_title_screen();
+
 void setup_music_main()
 {
   gbt_play(game_main_loop_Data, 1, 6);
@@ -93,17 +95,35 @@ GameState game_state = G_S_PLAYING;
 
 int main()
 {
-    setup_background();
-    setup_music_main();
-    setup_sprites_render();
-
-    set_bkg_data(BONSAI_STATE_ICON_OFFSET, 3, bonsai_state_icons);
+    setup_end_music();
+    setup_title_screen();
 
     bonsai_state_init(&bonsai_state);
     system_bonsai_update_init(&bonsai_update_state, &bonsai_state);
-    SHOW_SPRITES;
-    SHOW_BKG;
+
+    setup_end_music();
+    setup_sprites_render();
     SPRITES_8x16;
+    SHOW_BKG;
+    SHOW_SPRITES;
+
+    while((joypad() && J_START) == 0)
+    {
+        wait_vbl_done();
+        gbt_update();
+        system_kodama_facing(&kodama_state);
+        system_render_kodama(&kodama_state);
+    }
+    HIDE_BKG;
+    HIDE_SPRITES;
+    setup_background();
+    setup_music_main();
+
+    set_bkg_data(BONSAI_STATE_ICON_OFFSET, 3, bonsai_state_icons);
+    system_render_bonsai(&render_bonsai_state, &bonsai_state);
+    wait_vbl_done();
+    SHOW_BKG;
+    SHOW_SPRITES;
     while(game_state == G_S_PLAYING)
     {
         wait_vbl_done();
