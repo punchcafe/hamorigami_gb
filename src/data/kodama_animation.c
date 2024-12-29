@@ -334,7 +334,7 @@ const unsigned char kodama_run_pallette[] = {
     0xCC,0x04,0x00,0x00,0x00,0x00,0x00,0x00
 };
 
-void _kodama_animation_setup_pattern_table()
+void _kodama_animation_setup_pattern_table(void)
 {
     set_sprite_data(EMPTY_TILE_OFFSET, 2, EMPTY_TILE_OFFSET_pallette);
     set_sprite_data(KODAMA_RUN_SPRITE_OFFSET, 14, kodama_run_pallette);

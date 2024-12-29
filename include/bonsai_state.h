@@ -38,5 +38,5 @@ void bonsai_state_apply_delta(BonsaiState * state);
 
 unsigned char bonsai_state_inside_bonsai(BonsaiState * state, Vector * vec);
 
-unsigned char bonsai_state_update_size(BonsaiState * state, unsigned char half_width, unsigned char half_height);
+void bonsai_state_update_size(BonsaiState * state, unsigned char half_width, unsigned char half_height);
 #endif

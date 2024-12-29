@@ -50,7 +50,7 @@ void bonsai_state_apply_delta(BonsaiState * state)
     state->water_level_delta = 0;
 }
 
-unsigned char bonsai_state_update_size(BonsaiState * state, unsigned char half_width, unsigned char half_height)
+void bonsai_state_update_size(BonsaiState * state, unsigned char half_width, unsigned char half_height)
 {
     state->x_left = vec_x(&state->position) - half_width;
     state->x_right = vec_x(&state->position) + half_width;

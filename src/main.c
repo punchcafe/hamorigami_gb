@@ -63,43 +63,45 @@ SystemKodamaStrikeState kodama_strike_state = {0};
 
 extern SpriteFactoryState sprite_factory_state;
 
-extern void _kodama_animation_setup_pattern_table();
+extern void _kodama_animation_setup_pattern_table(void);
 
 extern const unsigned char * const game_main_loop_Data[];
 extern const unsigned char * const menu_loop_Data[];
 
-extern void setup_title_screen();
+extern void setup_title_screen(void);
 
-void setup_music_main()
+void setup_music_main(void)
 {
   gbt_play(game_main_loop_Data, 1, 6);
   gbt_loop(1);
 }
 
-void setup_end_music()
+void setup_end_music(void)
 {
   gbt_play(menu_loop_Data, 1, 6);
   gbt_loop(1);
 }
 
-void setup_sprites_render()
+void setup_sprites_render(void)
 {
   set_sprite_data(SUNSPRITE_PATTERN_OFFSET, 14, sunsprite_tile_data);
   set_sprite_data(RAINSPRITE_PATTERN_OFFSET, 30, rainsprite_tile_data);
   _kodama_animation_setup_pattern_table();
 }
 
-extern void setup_background();
+extern void setup_background(void);
 
 GameState game_state = G_S_PLAYING;
 
-int main()
+int main(void)
 {
+    SWITCH_ROM(0);
     setup_end_music();
     setup_title_screen();
 
     bonsai_state_init(&bonsai_state);
     system_bonsai_update_init(&bonsai_update_state, &bonsai_state);
+
 
     setup_end_music();
     setup_sprites_render();
